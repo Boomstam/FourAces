@@ -1,50 +1,39 @@
-import React from "react"
-import { css } from "@emotion/core"
-import { StaticQuery, Link, graphql } from "gatsby"
-import { rhythm } from "../utils/typography"
+import React from 'react';
+import { Link } from 'gatsby';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 export default ({ children }) => (
-    <StaticQuery    
-        query={graphql`      
-          query {        
-              site {          
-                  siteMetadata {            
-                      title          
-                    }        
-                }      
-            }    
-        `
-    }   
-   render={data => (      
-   <div
-        css={css`
-          margin: 0 auto;
-          max-width: 700px;
-          padding: ${rhythm(2)};
-          padding-top: ${rhythm(1.5)};
-        `}
-      >
-        <Link to={`/`}>
-          <h3
-            css={css`
-              margin-bottom: ${rhythm(2)};
-              display: inline-block;
-              font-style: normal;
-            `}
-          >
-            {data.site.siteMetadata.title}          
-            </h3>
-        </Link>
-        <Link
-          to={`/about/`}
-          css={css`
-            float: right;
-          `}
-        >
-          About
-        </Link>
+  <div>
+        <Nav>
+
+          <NavItem>
+            <NavLink href="/">Home</NavLink>
+          </NavItem>
+
+          <NavItem>
+            <NavLink href="/calendar">Calendar</NavLink>
+          </NavItem>
+
+          <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Media
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem  tag={Link} to="/audio">
+                  Audio
+                  </DropdownItem>
+                  <DropdownItem  tag={Link} to="/video">
+                  Video
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    Cancel
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+
+        </Nav>
         {children}
       </div>
-      )}  
-    />
 )

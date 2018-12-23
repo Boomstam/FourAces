@@ -1,13 +1,51 @@
+const path = require('path')
+
 module.exports = {
   siteMetadata: {
-    title: `Title from siteMetadata`,
+    title: `Four Aces Guitar Quartet`,
   },
   plugins: [
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'gatsby-starter-lightbox',
+        short_name: 'starter-lightbox',
+        start_url: '/',
+        background_color: '#663399',
+        theme_color: '#663399',
+        display: 'minimal-ui',
+      },
+    },
+    'gatsby-plugin-offline',
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `src`,
-        path: `${__dirname}/src/`,
+        name: `composers`,
+        path: `${__dirname}/src/images/composers/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`, 
+        path: path.join(__dirname, `src`, `images`)
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-rehype-images`,
+            options: {
+              tag: 'rehype-image'
+            }
+          },
+        ],
       },
     },
     `gatsby-transformer-remark`,
