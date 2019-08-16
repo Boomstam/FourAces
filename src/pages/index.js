@@ -2,18 +2,51 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import Layout from '../components/layout'
-import Lightbox from '../components/Lightbox'
+import AudioPlayer from '../components/AudioPlayer'
 import styled from 'styled-components'
+import HomeImg from '../components/homeImg';
+import BodyImages from 'react-body-images'
+import Img from 'gatsby-image';
+import Title from '../components/Title';
+import Overlay from '../components/Overlay';
+import ClickDetector from '../components/ClickDetector';
+
+const offsetMod = 0.57;
+
+function moveLeft()
+{
+  let width = window.outerWidth;
+  
+  window.scrollTo(width * offsetMod, 0);
+}
+
+function getImgNodeByName(data, name)
+{
+  return data.allImageSharp.edges.find(
+    obj => { 
+      return obj.node.fluid.originalName === name
+    }
+    ).node;
+}
 
 const IndexPage = ({ data }) => (
-  <div>
-  <Layout>
-   </Layout>
-    <Background>
-      <Lightbox images={data.allImageSharp.edges}>
-      </Lightbox>
-    </Background>
-    </div>
+  <div onLoad={moveLeft}>
+  <ClickDetector coors={data.allMarkdownRemark.edges}/>
+
+  <Layout style={{ zIndex: "0" }}/>
+  <HomeImg image={getImgNodeByName(data, "Schilderij.jpg")}/>
+  
+  <Overlay image={getImgNodeByName(data, "ScriabinCut.png")}/>
+  <Overlay image={getImgNodeByName(data, "BizetCut.png")}/>
+  <Overlay image={getImgNodeByName(data, "ChopinCut.png")}/>
+  <Overlay image={getImgNodeByName(data, "BachCut.png")}/>
+  <Overlay image={getImgNodeByName(data, "QuartetCut.png")}/>
+  <Overlay image={getImgNodeByName(data, "MozartCut.png")}/>
+  <Overlay image={getImgNodeByName(data, "DebussyCut.png")}/>
+  <Overlay image={getImgNodeByName(data, "RachmaninoffCut.png")}/>
+
+  </div>
+
 )
 
 IndexPage.propTypes = {
@@ -32,22 +65,31 @@ export const pageQuery = graphql`
     allImageSharp {
       edges {
         node {
+          fluid
+              {
+                originalName
+              }
           sizes(maxWidth: 1800) {
             ...GatsbyImageSharpSizes
           }
         }
       }
     }
+    allMarkdownRemark {
+        edges {
+          node {
+            rawMarkdownBody
+          }
+        }
+      }
+    allFile (filter: { ext: { eq: ".mp3" } }){
+    edges{
+      node
+        {
+          name
+          publicURL
+      	}
+      }
+    }
   }
-`
-const Background = styled.div`
-  background-image: radial-gradient(white, black);
-  @media (min-width: 600px) {
-  position: fixed;
-  top: 10vh;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  }
-  opacity: 0.9;
 `

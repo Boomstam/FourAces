@@ -5,7 +5,7 @@ module.exports = {
     title: `Four Aces Guitar Quartet`,
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
+      'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -31,10 +31,32 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `text`,
+        path: `${__dirname}/src/text`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `logo`,
+        path: `${__dirname}/src/images/logo/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `images`, 
         path: path.join(__dirname, `src`, `images`)
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `audio`, 
+        path: path.join(__dirname, `src`, `audio`)
+      },
+    },
+    
     {
       resolve: `gatsby-transformer-remark`,
       options: {

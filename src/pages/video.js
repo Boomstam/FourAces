@@ -1,26 +1,30 @@
 import { React, Component} from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import YouTube from 'react-youtube';
- 
-class Example extends Component {
-  render() {
+import YouTube from '../components/youtube';
+import styled from 'styled-components'
+
+class Video extends Component {
+  
+/*
+
     const opts = {
-      height: '390',
-      width: '640',
+
+      width: this.state.width * windowPercentageWidth,
+      height: this.state.height * windowPercentageHeight,
       playerVars: { // https://developers.google.com/youtube/player_parameters
         autoplay: 1
       }
     };
- 
+*/
+  render() {
+
     return (
+      <div>
         <Layout>
-      <YouTube
-        videoId="YfZsr8xt3f4"
-        opts={opts}
-        onReady={this._onReady}
-      />
       </Layout>
+      <YouTube/>
+    </div>
     );
   }
  
@@ -29,5 +33,9 @@ class Example extends Component {
     event.target.pauseVideo();
   }
 }
-
-export default Example;
+/*<YouTube
+      videoId="PL4o29bINVT4EG_y-k5jGoOu3-Am8Nvi10"//"YfZsr8xt3f4"
+      opts={opts}
+      onReady={this._onReady}
+    />*/
+export default Video;

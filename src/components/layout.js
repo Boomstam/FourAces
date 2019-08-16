@@ -1,39 +1,131 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Link, StaticQuery } from 'gatsby';
+import styled from 'styled-components';
+import Sponsors from './sponsors';
+import Language from './Language';
+import Menu from './menu';
+import Img from 'gatsby-image';
+import TextFinder from '../helpers/textFinder';
+import ImageFinder from '../helpers/ImageFinder';
+import BackgroundImg from './backgroundImg';
+import Hamburger from './hamburger';
+import Nav from './nav';
+
+const bannerImgName = "Banner.png";
+const bgImgName = "Schilderij.jpg";
+const treeImgName = "Tree.jpg";
+
+function getImageByName(data, name)
+{
+  return data.allImageSharp.edges.find(
+    obj => { 
+      return obj.node.fluid.originalName === name
+    }
+    ).node.sizes
+}
+
+function getBGImages(data)
+{
+  var bgImg = getImageByName(data, bgImgName);
+  var treeImg = getImageByName(data, treeImgName);
+
+  var images = { bgImg, treeImg };
+ 
+  return images;
+}
 
 export default ({ children }) => (
-  <div>
-        <Nav>
 
-          <NavItem>
-            <NavLink href="/">Home</NavLink>
-          </NavItem>
+  <StaticQuery
+    query={graphql`
+      query LayoutQuery {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+        allImageSharp {
+          edges {
+            node {
+              fluid
+              {
+                originalName
+              }
+              sizes(maxWidth: 1800) {
+                ...GatsbyImageSharpSizes
+          }
+        }
+      }
+    }
+    }
+    `}
+    
+    render={data => (
+/*
+<Banner
+              sizes={getImageByName(data, bannerImgName)}
+              style={{
+              position: "fixed"
+              
+            }}/>
+*/
+      <div>
+        
+        <Language/>
+        <TextFinder/>
+        <ImageFinder/>
+        
+        
 
-          <NavItem>
-            <NavLink href="/calendar">Calendar</NavLink>
-          </NavItem>
+        <Nav bannerImg={getImageByName(data, bannerImgName)}/>
+        
+        <Sponsors/>
 
-          <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Media
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem  tag={Link} to="/audio">
-                  Audio
-                  </DropdownItem>
-                  <DropdownItem  tag={Link} to="/video">
-                  Video
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Cancel
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+        <BackgroundImg 
+          images={getBGImages(data)}/>
 
-        </Nav>
         {children}
+        
+
+
       </div>
-)
+    )}
+    //sizes={getImageByName(data, bgImgName)}
+    />
+    )
+    /*
+
+
+@media (max-width: 650px) {
+    position: fixed;
+    margin: 3vh 0vw 1vh 10vw;
+    display: inline;
+  }*/
+
+  /*
+   @media (max-width: 650px) {
+    position: fixed;
+    top: 10vh;
+    left: 10vw;
+    width: 20vw;
+    height: 50vh;
+  }
+  z-index: 999
+
+  
+  top: 0;
+  opacity: 1;
+  width: 80vw;
+  */
+  //position: fixed;
+
+  /*const BGImage = styled(Img)`
+    position: fixed;
+    opacity: 0.3;
+    width: 100vw;
+    //height: 100vh;
+    
+    z-index: -999;
+  }
+  
+  `*/
