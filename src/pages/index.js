@@ -19,7 +19,7 @@ function getImgNodeByName(data, name)
 {
   return data.allImageSharp.edges.find(
     obj => { 
-      return obj.node.fluid.originalName === name
+      return obj.node.fluid.originalName === name;
     }
     ).node;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
-import CoorParser from '../helpers/CoorParser';
-import Details from './Details';
+import CoorParser from '../helpers/coorParser';
+import Details from './details';
 import Media from 'react-media'
 import storage from '../storage/storage'
 

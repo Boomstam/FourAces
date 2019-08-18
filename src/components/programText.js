@@ -2,9 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import storage from '../storage/storage';
 
-const shortKey = "60min";
-const longKey = "90min";
-
 const textType = "Info";
 
 export default class ProgramText extends React.Component {
