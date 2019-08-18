@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Link, graphql } from "gatsby"
-import { rhythm } from "../utils/typography"
-import Layout from "./layout"
-import TockifyWrap from "./tockifyWrap"
-import styled from 'styled-components'
+import { Link, graphql } from "gatsby";
+import { rhythm } from "../utils/typography";
+import Layout from "./layout";
+import styled from 'styled-components';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import CalendarLoader from './calendarLoader';
 

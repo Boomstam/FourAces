@@ -1,5 +1,6 @@
 import React from 'react';
-import Layout from '../components/layout'
+import Layout from '../components/layout';
+import Reviews from '../components/reviews';
 
 export default class Press extends React.Component
 {
@@ -7,8 +8,8 @@ export default class Press extends React.Component
     {
         return(
             <Layout>
-        <h1>Press</h1>
-        </Layout>
+                <Reviews/>
+            </Layout>
             )
     }
 }

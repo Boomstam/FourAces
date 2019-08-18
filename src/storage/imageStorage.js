@@ -23,11 +23,16 @@ export default class ImageStorage {
 
     getImageByName(name)
     {
+        try{
+            
         return this.images.find(
             obj => {
               return obj.node.fluid.originalName === name;
             }
             ).node.sizes;
+        } catch {
+            console.log("Image not found!!!_" + name);
+        }
     }
 
     getSceneByIndex(index)

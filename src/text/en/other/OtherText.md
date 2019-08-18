@@ -1,5 +1,5 @@
 ---
 type: "Other"
 language: "EN"
-calTitles: "Upcoming events-Where-When"
+calTitles: "Upcoming events-Where-When-Tickets-Location"
 ---

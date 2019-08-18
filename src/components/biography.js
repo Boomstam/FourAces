@@ -1,9 +1,11 @@
 import React from 'react';
-import Layout from '../components/layout'
-import storage from '../storage/storage'
-import styled from 'styled-components'
+import Layout from '../components/layout';
+import storage from '../storage/storage';
+import styled from 'styled-components';
+import Img from 'gatsby-image';
 
 const title = "Four Aces Guitar Quartet";
+const imgName = "BioPic.jpg";
 const textType = "Details";
 
 export default class Biography extends React.Component
@@ -12,14 +14,25 @@ export default class Biography extends React.Component
     {
         var bio = storage.textStorage.getText(textType, 4);
 
-        console.log(bio);
+        var img = storage.imageStorage.getImageByName(imgName);
 
-        return(
-            <div>
-                <Title>{title}</Title>
-                <Text dangerouslySetInnerHTML={{ __html: bio.html}}/>
-            </div>
-        )
+        if(img === undefined)
+        {
+            return(
+                <div>
+                    <Title>{title}</Title>
+                    <Text dangerouslySetInnerHTML={{ __html: bio.html}}/>
+                </div>
+            )
+        } else {
+            return(
+                <div>
+                    <Title>{title}</Title>
+                    <BioPic sizes={img}/>
+                    <Text dangerouslySetInnerHTML={{ __html: bio.html}}/>
+                </div>
+            )
+        }
     }
 }
 
@@ -29,6 +42,11 @@ const Title = styled.div`
     margin: 20vh 0vw 10vh 34vw;
 `
 
+
+const BioPic = styled(Img)`
+    margin: 0vh 0vw 5vh 10vw;
+    width: 80vw
+`
 
 const Text = styled.div`
 

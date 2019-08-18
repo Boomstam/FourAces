@@ -27,17 +27,10 @@ export default class TextStorage {
 
     getText(type, contentIndex)
     {
-        //console.log("getText_" + type + "_" + contentIndex);
-
-        /*if(type === infoType)
-        {
-            this.nlText.forEach(el => {
-                console.log(JSON.stringify(el));
-            });
-        }*/
+        
         var text = this.nlText;
         var nl = state.languageState.getLanguage();
-        //console.log(nl);
+        
 
         if(state.languageState.getLanguage() == false)
         {
@@ -45,17 +38,7 @@ export default class TextStorage {
         }
         var typeIndex = typeColl.indexOf(type);
         
-        //console.log("typeIndex_" + typeIndex);
-        //console.log("contentIndex_" + contentIndex);
-        //console.log("length_" + text.length);
-
-        //console.log("text_" + JSON.stringify(text[typeIndex]));
         
-        //var 
-        /*if(text[typeIndex] === undefined)
-        {
-            return undefined;
-        }*/
         return text[typeIndex][contentIndex];
     }
 
@@ -79,9 +62,6 @@ export default class TextStorage {
 
         nlInfo = nlInfo.sort((a, b) => a.frontmatter.index > b.frontmatter.index);
         enInfo = enInfo.sort((a, b) => a.frontmatter.index > b.frontmatter.index);
-
-        //console.log("Parse_" + JSON.stringify(nlInfo));
-        //console.log("Parse_" + JSON.stringify(enInfo));
 
         var infoIndex = typeColl.indexOf(infoType);
 
@@ -135,9 +115,6 @@ export default class TextStorage {
 
         var nlOther = nodeColl.find(obj => { return obj.frontmatter.language === nl });
         var enOther = nodeColl.find(obj => { return obj.frontmatter.language === en });
-
-        console.log("otherNL_" + JSON.stringify(nlOther));
-        console.log("otherEN_" + JSON.stringify(enOther));
 
         nlOther = nlOther.frontmatter.calTitles.split(otherSeparator);
         enOther = enOther.frontmatter.calTitles.split(otherSeparator);

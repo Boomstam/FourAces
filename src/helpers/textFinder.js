@@ -6,8 +6,6 @@ import storage from '../storage/storage'
 
 function loadText(data)
 {
-  console.log("loadText");
-  
   storage.textStorage.setText(data.allMarkdownRemark);
 }
 
@@ -54,6 +52,5 @@ const TextFinder = ({ children }) => (
     )}
     />
     )
-    //<Img sizes={data.allImageSharp.edges[3].node.sizes}/>
     
 export default TextFinder;

@@ -1,4 +1,3 @@
-import Img from 'gatsby-image';
 import { Keyframes } from "react-spring/renderprops";
 import React from 'react';
 import CoorParser from '../helpers/CoorParser';
@@ -25,8 +24,6 @@ class ClickDetector extends React.Component {
         this.reset = this.reset.bind(this);
         
         this.setState({ index: -1, width: window.outerWidth });
-
-        console.log("Clickdetector");
       }
   
   componentDidMount() {
@@ -52,8 +49,6 @@ class ClickDetector extends React.Component {
       
       let xCoor = event.nativeEvent.offsetX * sizeMod;
       let yCoor = event.nativeEvent.offsetY * sizeMod;
-      
-      console.log("click detected_" + xCoor + "_" + yCoor);
 
       yCoor = imgHeight - yCoor;
 

@@ -13,13 +13,15 @@ export default function timeFormatter(item)
     var time = dateTime[1].split(":"); //split hh ss etc...
     var startHour = time[0];
     var startMin = time[1];
-    var hour = startHour + " " + startMin;
+    var hour = startHour + "u" + startMin;
     
-    date.push(hour);
-    
-    return date;
+    //date.push(hour);
+    //console.log("Date_" + date);
+    //console.log("startDT_" + startDT);
 
+    var dateString = dateTime[0] + " - " + hour;
 
+    return dateString;
 }
 
 function padNum(num) {

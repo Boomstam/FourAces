@@ -7,8 +7,6 @@ import storage from '../storage/storage'
 
 function loadImages(data)
 {
-  console.log("loadImages");
-  
   storage.imageStorage.setImages(data.allImageSharp.edges);
 }
 

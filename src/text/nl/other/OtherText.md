@@ -1,5 +1,5 @@
 ---
 type: "Other"
 language: "NL"
-calTitles: "Volgende concerten-Waar-Wanneer"
+calTitles: "Volgende concerten-Waar-Wanneer-Tickets-Locatie"
 ---

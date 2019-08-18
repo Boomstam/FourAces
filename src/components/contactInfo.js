@@ -6,6 +6,7 @@ const infoType = "Info";
 const index = 1;
 
 const mailAdress = "info@fouracesgq.com"
+const mailListHyperLink = "https://us3.list-manage.com/subscribe?u=1f3dc7d1ffbcf14d26a22133d&id=4967e12432";
 
 export default class ContactInfo extends React.Component
 {
@@ -29,7 +30,7 @@ export default class ContactInfo extends React.Component
                 <MailingListContainer>
                 <Info>{info.frontmatter.mailList}</Info>
                 
-                <MailingList>{info.frontmatter.mailListLink}</MailingList>
+                <MailingList href={mailListHyperLink}>{info.frontmatter.mailListLink}</MailingList>
                 </MailingListContainer>
 
                 <Info></Info>

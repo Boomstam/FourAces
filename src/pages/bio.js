@@ -1,6 +1,6 @@
 import React from 'react';
-import Layout from '../components/layout'
-import Biography from  '../components/biography'
+import Layout from '../components/layout';
+import Biography from  '../components/biography';
 
 export default class Bio extends React.Component
 {
@@ -8,8 +8,8 @@ export default class Bio extends React.Component
     {
         return(
             <Layout>
-        <Biography/>
-        </Layout>
+                <Biography/>
+            </Layout>
         )
     }
 }

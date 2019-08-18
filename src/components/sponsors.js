@@ -7,9 +7,7 @@ import styled from 'styled-components';
 const imgName = "savarezColor.jpg"
 
 function logoImage(data)
-{
-    console.log("logo requested");
-    
+{   
   return data.allImageSharp.edges.find(
     obj => { 
       return obj.node.fluid.originalName === imgName

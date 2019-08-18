@@ -16,7 +16,7 @@ Georgië en China. In 2018 volgde een eerste concertreeks in de VS. In de zomer 
 opnieuw een tournee in China gepland.
 In 2013 werd het ensemble de laureaat van Supernova, een Belgische kamermuziekcompetitie die
 wordt ondersteund door het nationale radio- en televisienetwerk, de Belgische overheid en talrijke
-cultuurpartners. In 2017 won het kwartet de interna- tionale kamermuziekcompetitie Paola
+cultuurpartners. In 2017 won het kwartet de internationale kamermuziekcompetitie Paola
 Ruminelli in Ossola (Italië).
 
 Four Aces Guitar Quartet zijn:

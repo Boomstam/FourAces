@@ -1,43 +1,56 @@
 import React from 'react';
-import Layout from '../components/layout'
-import storage from '../storage/storage'
-import styled from 'styled-components'
+import Img from 'gatsby-image';
+import { StaticQuery } from 'gatsby';
+import styled from 'styled-components';
+import { Page, Document } from 'react-pdf';
+import storage from '../storage/storage';
 
-const title = "Four Aces Guitar Quartet";
-const textType = "Details";
+const shortKey = "60min";
+const longKey = "90min";
 
-export default class ProgramText extends React.Component
-{
-    render()
-    {
-        var bio = storage.textStorage.getText(textType, 4);
+const textType = "Info";
 
-        console.log(bio);
+export default class ProgramText extends React.Component {
 
-        return(
+    render() {
+        var shortProgram = storage.textStorage.getText(textType, 2);
+        var longProgram = storage.textStorage.getText(textType, 3);
+
+        return (
             <div>
-                <Title>{title}</Title>
-                <Text dangerouslySetInnerHTML={{ __html: bio.html}}/>
+                <TopMargin/>
+
+                <Title>{shortProgram.frontmatter.title}</Title>
+
+                <StyledProgram dangerouslySetInnerHTML={{ __html: shortProgram.html }}>
+                </StyledProgram>
+
+                <SpaceBetween/>
+
+                <Title>{longProgram.frontmatter.title}</Title>
+
+                <StyledProgram dangerouslySetInnerHTML={{ __html: longProgram.html }}>
+                </StyledProgram>
             </div>
         )
     }
 }
 
+const TopMargin = styled.div`
+    margin: 15vh 0vw 0vh 0vw;
+`
+
 const Title = styled.div`
-    font-size: 3vw;
-    font-weight: 700;
-    margin: 20vh 0vw 10vh 34vw;
+    font-size: 1.8vw;
+    margin: 5vh 20vw 5vh 20vw;
+    text-align: center;
 `
 
-const Text = styled.div`
-
-  font-size: 1.5vmax;
-  font-weight: 400;
-  margin: 0vh 0vw 0vh 20vw;
-  width: 60vw;
-  z-index: 1; 
+const SpaceBetween = styled.div`
+    margin: 5vh 0vw 0vh 0vw;
 `
-/*
-left: 30vw;
-  top: 30vh;
-*/
+
+const StyledProgram = styled.div`    
+    margin: 0vh 20vw 0vh 20vw;
+    text-align: center;
+`

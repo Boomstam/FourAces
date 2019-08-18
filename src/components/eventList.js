@@ -1,15 +1,39 @@
 import React from 'react';
-import styled from 'styled-components'
-import storage from '../storage/storage'
+import styled from 'styled-components';
+import storage from '../storage/storage';
+import EventInfo from './eventInfo';
 
 const textType = "Other";
 const numColumns = 5;
 const firstEventTop = 40;
-const spaceBetween = 5;
+const spaceBetween = 8;
 const heightSuffix = "vh";
 
 export default class EventList extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+
+        this.setState({ index: -1 });
+
+        this.closeInfo = this.closeInfo.bind(this);
+    }
+
+    handleClick(eventIndex)
+    {
+        console.log("Handled like a bows_" + eventIndex);
+
+        this.setState({ index: eventIndex });
+    }
+
+    closeInfo()
+    {
+        console.log("Closed Info_");
+
+        this.setState({ index: -1 });
+    }
+
     render()
     {
         var events = storage.calStorage.getEvents();
@@ -19,26 +43,60 @@ export default class EventList extends React.Component
         {
             titles.push(storage.textStorage.getText(textType, i));
         }
+        var stateNullOrNone = true;
+
+        if(this.state !== null)
+        {
+            if(this.state.index > -1)
+            {
+                stateNullOrNone = false;
+            }
+        }
+
+        if(stateNullOrNone)
+        {
         return(
             <div>
                 <Title>{titles[0]}</Title>
 
-                <Where>{titles[1]}</Where>
-                <When>{titles[2]}</When>
+                <Where style={{fontWeight: "800", fontSize: "2.5vw"}}>{titles[1]}</Where>
+                <When style={{fontWeight: "800", fontSize: "2.5vw"}}>{titles[2]}</When>
 
                 {events.map((event, i) => 
-                    <div>
+                    <Event>
+                        <Border 
+                        onClick={(e) => {this.handleClick(i)}}
+                        style={{top: (firstEventTop + (i * spaceBetween)) + heightSuffix}}/>
                     <Where style={{top: (firstEventTop + (i * spaceBetween)) + heightSuffix}}>
                         {event[0]}
                     </Where>
                     <When style={{top: (firstEventTop + (i * spaceBetween)) + heightSuffix}}>
                         {event[1]}
                     </When>
-                    </div>)}                
+                    </Event>)}                
         </div>
-        )
+        )}
+        else{
+            return(
+                <EventInfo 
+                customClick={this.closeInfo.bind(this)}
+                info={events[this.state.index]}
+                titles={titles}/>
+            )
+        }
     }
 }
+
+const Border = styled.div`
+    border-style: solid;
+    border-weight: 1px;
+    position: absolute;
+    left: 13vw;
+    width: 75vw;
+    height: 6vh;
+    z-index: 3;
+`
+
 
 const TopMargin = styled.div`
     margin: 20vh 0vw 0vh 5vw;  
@@ -51,33 +109,22 @@ const Title = styled.div`
 `
 
 const Where = styled.div`
+    font-size: 1.5vw;
     position: absolute;
-    left: 15vw;
+    left: 20vw;
 `
 
 const When = styled.div`
+    font-size: 1.5vw;
     position: absolute;
-    left: 60vw;
+    left: 70vw;
 `
 
-const StyledTitleList = styled.div`
-    margin: 20vh 0vw 0vh 5vw;
+const Event = styled.div`
+    
+    
 `
 
-const StyledTitle = styled.div`
-    display: inline;
-    margin: 0vh 0vw 0vh 10vw;
-    width: 50vw;
-`
-
-const StyledDataList = styled.div`
-    margin: 5vh 0vw 0vh 5vw;
-`
-
-const StyledData = styled.div`
-    display: inline;
-    margin: 20vh 0vw 0vh 10vw;
-`
 
 /*
 <div>
