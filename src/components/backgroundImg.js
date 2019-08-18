@@ -6,13 +6,6 @@ import Media from 'react-media';
 
 const offsetMod = 0.55;
 
-/*function moveLeft()
-{
-
-  let width = window.outerWidth;
-  
-  window.scrollTo(width * offsetMod, 0);
-}*/
 const home = "/";
 
 class BackgroundImg extends React.Component {
@@ -57,6 +50,9 @@ class BackgroundImg extends React.Component {
         </Container>
         
     )
+  } else
+  {
+    return (<div/>)
   }
 }
 }
