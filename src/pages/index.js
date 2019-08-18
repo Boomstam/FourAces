@@ -3,8 +3,8 @@ import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import Layout from '../components/layout'
 import HomeImg from '../components/homeImg';
-import Overlay from '../components/Overlay';
-import ClickDetector from '../components/ClickDetector';
+import Overlay from '../components/overlay';
+import ClickDetector from '../components/clickDetector';
 
 const offsetMod = 0.57;
 

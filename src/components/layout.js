@@ -1,9 +1,9 @@
 import React from 'react';
 import { StaticQuery } from 'gatsby';
 import Sponsors from './sponsors';
-import Language from './Language';
+import Language from './language';
 import TextFinder from '../helpers/textFinder';
-import ImageFinder from '../helpers/ImageFinder';
+import ImageFinder from '../helpers/imageFinder';
 import BackgroundImg from './backgroundImg';
 import Nav from './nav';
 
