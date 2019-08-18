@@ -59,6 +59,10 @@ function handleClick(nl)
 
 function getInitialLanguage() {
     
+    if(localStorage === undefined)
+    {
+        return "NL";
+    }
     var nl = localStorage.getItem( 'language' );
 
     if(nl === undefined || nl === null)
