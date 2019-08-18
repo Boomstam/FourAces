@@ -1,6 +1,6 @@
 import React from 'react';
 import Img from 'gatsby-image';
-import { Link, StaticQuery } from 'gatsby';
+import { StaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import state from '../state/state';
 

@@ -1,6 +1,4 @@
 import React from 'react';
-import Sound from 'react-sound-frank';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 class Title extends React.Component {

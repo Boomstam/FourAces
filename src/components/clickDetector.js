@@ -1,4 +1,3 @@
-import { Keyframes } from "react-spring/renderprops";
 import React from 'react';
 import CoorParser from '../helpers/CoorParser';
 import Details from './Details';

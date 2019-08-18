@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
-import storage from '../storage/storage'
-import Img from 'gatsby-image';
-import CompDetails from './compDetails'
+import storage from '../storage/storage';
+import CompDetails from './compDetails';
 
 const infoType = "Info";
 

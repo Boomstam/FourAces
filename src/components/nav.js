@@ -1,11 +1,10 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-import Hamburger from './hamburger'
-import Menu from './menu'
-import state from '../state/state'
-import storage from '../storage/storage'
+import Hamburger from './hamburger';
+import Menu from './menu';
+import state from '../state/state';
+import storage from '../storage/storage';
 
 const bannerImgName = "Banner.png";
 
@@ -31,11 +30,7 @@ class Nav extends React.Component {
 
         let menuIsOpen = state.menuToggler.isOpen;
 
-        console.log("valueChanged_" + menuIsOpen);
-
         this.setState({ isOpen: menuIsOpen });
-
-        console.log("newState_" + this.state.isOpen);
     }
 
     render() {

@@ -1,5 +1,4 @@
 import React from 'react';
-import Sound from 'react-sound-frank';
 import PropTypes from 'prop-types';
 
 class AudioPlayer extends React.Component {

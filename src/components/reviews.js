@@ -1,5 +1,4 @@
 import React from 'react';
-import Img from 'gatsby-image';
 import { StaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import { Page, Document } from 'react-pdf';

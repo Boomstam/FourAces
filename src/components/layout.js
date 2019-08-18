@@ -1,14 +1,10 @@
 import React from 'react';
-import { Link, StaticQuery } from 'gatsby';
-import styled from 'styled-components';
+import { StaticQuery } from 'gatsby';
 import Sponsors from './sponsors';
 import Language from './Language';
-import Menu from './menu';
-import Img from 'gatsby-image';
 import TextFinder from '../helpers/textFinder';
 import ImageFinder from '../helpers/ImageFinder';
 import BackgroundImg from './backgroundImg';
-import Hamburger from './hamburger';
 import Nav from './nav';
 
 const bannerImgName = "Banner.png";

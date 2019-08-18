@@ -1,7 +1,5 @@
 import Img from 'gatsby-image';
-import { Keyframes } from "react-spring/renderprops";
 import React from 'react';
-import CoorParser from '../helpers/CoorParser';
 import styled from 'styled-components';
 import storage from '../storage/storage'
 import { Html5Entities } from 'html-entities';

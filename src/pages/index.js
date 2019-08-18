@@ -2,12 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import Layout from '../components/layout'
-import AudioPlayer from '../components/AudioPlayer'
-import styled from 'styled-components'
 import HomeImg from '../components/homeImg';
-import BodyImages from 'react-body-images'
-import Img from 'gatsby-image';
-import Title from '../components/Title';
 import Overlay from '../components/Overlay';
 import ClickDetector from '../components/ClickDetector';
 

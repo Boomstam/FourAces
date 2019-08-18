@@ -1,7 +1,6 @@
 import React from 'react';
 import Img from 'gatsby-image';
-import { Link, StaticQuery } from 'gatsby';
-import ReactSVG from 'react-svg'
+import { StaticQuery } from 'gatsby';
 import styled from 'styled-components';
 
 const imgName = "savarezColor.jpg"

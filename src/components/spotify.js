@@ -1,6 +1,6 @@
 import SpotifyPlayer from 'react-spotify-player';
-import React from "react"
-import styled from 'styled-components'
+import React from "react";
+import styled from 'styled-components';
 
 // size may also be a plain string using the presets 'large' or 'compact'
 const size = {

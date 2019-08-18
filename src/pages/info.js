@@ -1,9 +1,8 @@
-import React from "react"
-import Helmet from "react-helmet"
-import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import styled from 'styled-components'
-import GoogleFontLoader from 'react-google-font-loader'
+import React from "react";
+import { graphql } from "gatsby";
+import Layout from "../components/layout";
+import styled from 'styled-components';
+import GoogleFontLoader from 'react-google-font-loader';
 
 export default ({ data }) => (  
 <Layout>

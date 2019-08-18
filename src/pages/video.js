@@ -1,8 +1,6 @@
-import { React, Component} from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import { React, Component} from "react";
+import Layout from "../components/layout";
 import YouTube from '../components/youtube';
-import styled from 'styled-components'
 
 class Video extends Component {
   
