@@ -18,8 +18,6 @@ export default class ContactInfo extends React.Component
     render(){
         var info = storage.textStorage.getText(infoType, index);
 
-        console.log("Info_" + info);
-
         return(
             <div>
                 <TopMargin/>
@@ -92,7 +90,7 @@ const MailingList = styled.a`
     display: inline;
     z-index: 5;
     text-align: center;
-    margin: 0vh 0vw 0vh 1vw;
+    margin: 0vh 0vw 0vh 0.5vw;
 
     @media (min-width: 650px) {
         font-size: 1.5vw;

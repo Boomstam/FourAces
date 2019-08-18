@@ -1,15 +1,17 @@
 import storage from '../storage/storage'
+import React from 'react';
 
-export default class MenuToggler {
+var isOpen = false;
+var reRenderCallback = null;
 
-    constructor(){
-        this.isOpen = false;
+export default class MenuToggler extends React.Component{
 
+    componentDidMount()
+    {
         if(window.innerWidth > storage.constStorage.smartphoneWidth)
         {
             this.isOpen = true;
         }
-        this.reRenderCallback = null;
     }
     
     setReRenderCallback(callback)
@@ -22,8 +24,6 @@ export default class MenuToggler {
         this.isOpen = !this.isOpen;
 
         this.reRenderCallback();
-
-        console.log("menu toggled_" + this.isOpen);
     }
 
     close()
@@ -31,7 +31,5 @@ export default class MenuToggler {
         this.isOpen = false;
 
         this.reRenderCallback();
-
-        console.log("menu closed_" + this.isOpen);
     }
 }
