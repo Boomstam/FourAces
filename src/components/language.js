@@ -59,7 +59,7 @@ function handleClick(nl)
 
 function getInitialLanguage() {
     
-    if(localStorage === undefined)
+    if(typeof localStorage === undefined)
     {
         return "NL";
     }
