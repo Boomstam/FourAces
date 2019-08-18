@@ -29,6 +29,9 @@ export default class CalendarLoader extends React.Component
       }
   
       loadGoogleAPI() {
+
+        if(typeof document !== 'undefined')
+        {
         const script = document.createElement("script");
         script.src = "https://apis.google.com/js/client.js";
   
@@ -41,6 +44,7 @@ export default class CalendarLoader extends React.Component
           });
         };
         document.body.appendChild(script);
+        }   
       }
 
        makeApiCall() {

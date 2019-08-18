@@ -11,14 +11,15 @@ const windowPercentageHeight = 0.6;
 class Youtube extends React.Component {
 
     constructor(props) {
-        
         super(props);
+      }
+      
+      componentDidMount() {
+        
+        this.updateWindowDimensions();
         
         this.setState({ width: window.outerWidth, width: window.outerHeight });
-      }
-    
-      componentDidMount() {
-        this.updateWindowDimensions();
+
         window.addEventListener('resize', this.updateWindowDimensions);
       }
       

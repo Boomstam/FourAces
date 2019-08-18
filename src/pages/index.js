@@ -10,9 +10,12 @@ const offsetMod = 0.57;
 
 function moveLeft()
 {
+  if(typeof window !== 'undefined')
+  {
   let width = window.outerWidth;
   
   window.scrollTo(width * offsetMod, 0);
+  }
 }
 
 function getImgNodeByName(data, name)

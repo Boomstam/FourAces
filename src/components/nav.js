@@ -11,18 +11,20 @@ const bannerImgName = "Banner.png";
 class Nav extends React.Component {
 
     constructor(props) {
+
         super(props);
+
         this.state = { isOpen: false };
 
-        if(window.innerWidth > storage.constStorage.smartphoneWidth)
-        {
-            this.state = { isOpen: true };
-        }
         this.valueChanged = this.valueChanged.bind(this);
     }
 
     componentDidMount() {
-
+        
+        if(window.innerWidth > storage.constStorage.smartphoneWidth)
+        {
+            this.setState({ isOpen: true });
+        }
         state.menuToggler.setReRenderCallback(this.valueChanged);
     }
 

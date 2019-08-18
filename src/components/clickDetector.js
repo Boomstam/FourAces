@@ -22,11 +22,14 @@ class ClickDetector extends React.Component {
 
         this.reset = this.reset.bind(this);
         
-        this.setState({ index: -1, width: window.outerWidth });
+        
       }
   
   componentDidMount() {
     this.updateWindowDimensions();
+
+    this.setState({ index: -1, width: window.outerWidth });
+
     window.addEventListener('resize', this.updateWindowDimensions);
   }
   
