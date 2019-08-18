@@ -18,6 +18,10 @@ const home = "/";
 class BackgroundImg extends React.Component {
 
   render() {
+    
+    if(typeof window !== 'undefined')
+    {
+    
     const { images } = this.props;
     
     if(window.location.pathname === home)
@@ -54,6 +58,7 @@ class BackgroundImg extends React.Component {
         
     )
   }
+}
 }
 BackgroundImg.propTypes = {
   images: PropTypes.array.isRequired,
