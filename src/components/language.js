@@ -58,18 +58,21 @@ function handleClick(nl)
 }
 
 function getInitialLanguage() {
-    
-    if(typeof localStorage === undefined)
-    {
-        return "NL";
-    }
-    var nl = localStorage.getItem( 'language' );
 
-    if(nl === undefined || nl === null)
+    if(typeof localStorage === 'undefined')
     {
         return "NL";
+    
+    } else {
+        
+        var nl = localStorage.getItem( 'language' );
+    
+        if(nl === undefined || nl === null)
+        {
+            return "NL";
+        }
+        return nl; 
     }
-    return nl; 
 }
 
 function storeLanguage(lang) {
