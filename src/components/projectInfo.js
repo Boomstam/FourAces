@@ -23,11 +23,10 @@ export default class ProjectInfo extends React.Component
                     {text.frontmatter.title}
                 </Title>
                 <Intro dangerouslySetInnerHTML={{ __html: text.html}}/>
-                <CompDetails index="0"/>
                 <CompDetails index="1"/>
-                <CompDetails index="2"/>
+                <CompDetails index="0"/>
                 <CompDetails index="3"/>
-                <CompDetails index="4"/>
+                <CompDetails index="2"/>
                 <CompDetails index="5"/>
                 <CompDetails index="6"/>
                 <CompDetails index="7"/>
@@ -35,7 +34,7 @@ export default class ProjectInfo extends React.Component
             </div>
         )
     }
-}
+}//<CompDetails index="4"/>
 
 const DetailContainer = styled.div`
     position: absolute;

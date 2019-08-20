@@ -22,15 +22,11 @@ export default class EventList extends React.Component
 
     handleClick(eventIndex)
     {
-        console.log("Handled like a bows_" + eventIndex);
-
         this.setState({ index: eventIndex });
     }
 
     closeInfo()
     {
-        console.log("Closed Info_");
-
         this.setState({ index: -1 });
     }
 
@@ -87,9 +83,14 @@ export default class EventList extends React.Component
     }
 }
 
+//border-weight: 10px;
+//width: 80vw;
 const Border = styled.div`
+    &:hover {
+        border-width: 5px;
+    }
+    border-width: 1px;
     border-style: solid;
-    border-weight: 1px;
     position: absolute;
     left: 13vw;
     width: 75vw;
@@ -121,8 +122,7 @@ const When = styled.div`
 `
 
 const Event = styled.div`
-    
-    
+    padding: 0vh 0vw 10vh 0vw; 
 `
 
 

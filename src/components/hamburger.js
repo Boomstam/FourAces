@@ -61,7 +61,7 @@ const Hamburger = ({ children }) => (
     )}
   />
 )
-//(filter:{ relativePath:{ eq:"whiteLine.png" } }){
+
 const StyledHamburger = styled.div`
 
 z-index: 999;
@@ -84,11 +84,6 @@ z-index: 999;
   }
   
 `
-
-/*
-  position: fixed;
-  top: 0;
-  left: 1vw;*/
 
 const StyledImg = styled(Img)`
   

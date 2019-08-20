@@ -188,10 +188,10 @@ const StyledMenu = styled.div`
     position: fixed;
     left: 0;
     top: 0;
-    margin: 5vh 0vw 0vh 38vw;
+    margin: 5vh 0vw 0vh 36vw;
     
     @media (min-width: 650px) {
-      margin: 2vh 0vw 0vh 27vw;
+      margin: 2vh 0vw 0vh 25vw;
       font-weight: 1000;
       font-size: 2.5vw;
     }
@@ -207,7 +207,7 @@ const StyledLink = styled(Link)`
     display: block;
 
     
-    margin: 0vh 2vw 0vh 0vw;
+    margin: 0vh 1vw 0vh 1vw;
     @media (min-width: 650px) {
         display: inline; 
       }
@@ -227,8 +227,7 @@ const Dropdown = styled.div`
     &:hover{
     background-color:rgba(222,224,236,0.7);
     }
-    margin: 0vh 2vw 0vh 0vw;
-
+    padding: 0vh 1vw 0vh 1vw;
     display: inline-grid;
 `
 /* 

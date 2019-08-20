@@ -3,7 +3,7 @@ import { StaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import { Page, Document } from 'react-pdf';
 
-const forAcesTitle = "in_IETS_POOLS"
+const forAcesTitle = "in 'Szescstrunswiata'"
 const forAcesKey = "For Aces";
 
 const viwTitle = "in 'Vlamingen in de Wereld'"
@@ -77,5 +77,5 @@ const SubTitle = styled.div`
 `
 
 const ReviewColl = styled.div`
-  margin: 15vh 30vw 0vh 30vw;
+  margin: 15vh 28vw 0vh 28vw;
 `

@@ -5,7 +5,9 @@ import Language from './language';
 import TextFinder from '../helpers/textFinder';
 import ImageFinder from '../helpers/imageFinder';
 import BackgroundImg from './backgroundImg';
+import Logos from './logos';
 import Nav from './nav';
+import GoogleFontLoader from 'react-google-font-loader';
 
 const bannerImgName = "Banner.png";
 const bgImgName = "Schilderij.jpg";
@@ -57,26 +59,29 @@ export default ({ children }) => (
     `}
     
     render={data => (
-/*
-<Banner
-              sizes={getImageByName(data, bannerImgName)}
-              style={{
-              position: "fixed"
-              
-            }}/>
-*/
       <div>
-        
+        <GoogleFontLoader
+      fonts={[
+        {
+          font: 'Roboto',
+          weights: [400, '400i'],
+        },
+        {
+          font: 'Roboto Mono',
+          weights: [400, 700],
+        },
+      ]}
+      subsets={['cyrillic-ext', 'greek']}
+    />
         <Language/>
         <TextFinder/>
         <ImageFinder/>
-        
-        
 
         <Nav bannerImg={getImageByName(data, bannerImgName)}/>
         
         <Sponsors/>
-
+        <Logos/>
+        
         <BackgroundImg 
           images={getBGImages(data)}/>
 

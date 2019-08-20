@@ -12,26 +12,43 @@ class Youtube extends React.Component {
 
     constructor(props) {
         super(props);
+
+        console.log("constructor");
+        this.setState({ width: 600, height: 400 });
+
+
       }
       
       componentDidMount() {
-        
+        console.log("didmount");
         this.updateWindowDimensions();
         
-        this.setState({ width: window.outerWidth, width: window.outerHeight });
+        this.setState({ width: window.outerWidth, height: window.outerHeight });
 
         window.addEventListener('resize', this.updateWindowDimensions);
       }
       
       componentWillUnmount() {
+        console.log("unmount");
         window.removeEventListener('resize', this.updateWindowDimensions);
       }
       
       updateWindowDimensions() {
+        console.log("update");
         try{
           this.setState({ width: window.outerWidth, height: window.outerHeight });
         }
         catch{}
+      }
+
+      getWidth()
+      {
+        return this.state.width * windowPercentageWidth;
+      }
+
+      getHeight()
+      {
+        return this.state.height * windowPercentageHeight;
       }
 
     render(){
@@ -55,8 +72,8 @@ class Youtube extends React.Component {
                             }
                         }
                       }}
-                      width={this.state.width * windowPercentageWidth}
-                      height={this.state.height * windowPercentageHeight}
+                      width={this.getWidth()}
+                      height={this.getHeight()}
                       playing
                     ></ReactPlayer>
                     </Player>
