@@ -36,7 +36,9 @@ export default () => (
       `} 
       
         render={data => (
-            <StyledLink href="http://www.savarez.com/four-aces-guitar-quartet">
+            <StyledLink 
+                href="http://www.savarez.com/four-aces-guitar-quartet"
+                target="_blank">
 
             <StyledLogo 
                 sizes={logoImage(data)}/>

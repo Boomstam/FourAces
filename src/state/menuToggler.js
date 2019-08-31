@@ -1,17 +1,30 @@
-import storage from '../storage/storage'
-import React from 'react';
+const storageKey = 'menuState';
+const trueKey = 'true';
 
-var isOpen = false;
-var reRenderCallback = null;
+export default class MenuToggler {
 
-export default class MenuToggler extends React.Component{
-
-    componentDidMount()
-    {
-        if(window.innerWidth > storage.constStorage.smartphoneWidth)
+    constructor()
+    {   
+        if(typeof localStorage === 'undefined')
         {
-            this.isOpen = true;
+               this.isOpen = false;
+        } else {
+
+            let isOpen = (localStorage.getItem(storageKey) === trueKey);
+
+            if(isOpen !== undefined){
+
+                this.isOpen = isOpen;
+            } else {
+                localStorage.setItem(storageKey, false);
+            }
         }
+        this.getOpenState = this.getOpenState.bind(this);
+    }
+
+    getOpenState(){
+
+        return this.isOpen;
     }
     
     setReRenderCallback(callback)
@@ -22,14 +35,9 @@ export default class MenuToggler extends React.Component{
     toggleMenu(){
 
         this.isOpen = !this.isOpen;
-
-        this.reRenderCallback();
-    }
-
-    close()
-    {
-        this.isOpen = false;
-
+        
+        localStorage.setItem(storageKey, this.isOpen);
+        
         this.reRenderCallback();
     }
 }

@@ -5,7 +5,7 @@ import EventInfo from './eventInfo';
 
 const textType = "Other";
 const numColumns = 5;
-const firstEventTop = 40;
+const firstEventTop = 30;
 const spaceBetween = 8;
 const heightSuffix = "vh";
 
@@ -48,27 +48,26 @@ export default class EventList extends React.Component
                 stateNullOrNone = false;
             }
         }
-
         if(stateNullOrNone)
         {
         return(
             <div>
                 <Title>{titles[0]}</Title>
 
-                <Where style={{fontWeight: "800", fontSize: "2.5vw"}}>{titles[1]}</Where>
-                <When style={{fontWeight: "800", fontSize: "2.5vw"}}>{titles[2]}</When>
-
                 {events.map((event, i) => 
                     <Event>
                         <Border 
                         onClick={(e) => {this.handleClick(i)}}
                         style={{top: (firstEventTop + (i * spaceBetween)) + heightSuffix}}/>
-                    <Where style={{top: (firstEventTop + (i * spaceBetween)) + heightSuffix}}>
-                        {event[0]}
-                    </Where>
-                    <When style={{top: (firstEventTop + (i * spaceBetween)) + heightSuffix}}>
-                        {event[1]}
-                    </When>
+                    <Date style={{top: (firstEventTop + (i * spaceBetween)) + heightSuffix}}>
+                        {event.date}
+                    </Date>
+                    <City style={{top: (firstEventTop + (i * spaceBetween)) + heightSuffix}}>
+                        {event.city}
+                    </City>
+                    <Venue style={{top: (firstEventTop + (i * spaceBetween)) + heightSuffix}}>
+                        {event.venue}
+                    </Venue>
                     </Event>)}                
         </div>
         )}
@@ -83,12 +82,21 @@ export default class EventList extends React.Component
     }
 }
 
-//border-weight: 10px;
-//width: 80vw;
+const Title = styled.div`
+    font-size: 2vw;
+    font-weight: 700;
+    margin: 15vh 0vw 0vh 40vw
+`
+
+const Event = styled.div`
+    padding: 0vh 0vw 10vh 0vw; 
+`
+
 const Border = styled.div`
     &:hover {
         border-width: 5px;
     }
+    background-color: rgba(0, 0, 0, 0.1);
     border-width: 1px;
     border-style: solid;
     position: absolute;
@@ -98,46 +106,20 @@ const Border = styled.div`
     z-index: 3;
 `
 
-
-const TopMargin = styled.div`
-    margin: 20vh 0vw 0vh 5vw;  
-`
-
-const Title = styled.div`
-    font-size: 2vw;
-    font-weight: 700;
-    margin: 15vh 0vw 5vh 40vw
-`
-
-const Where = styled.div`
+const Date = styled.div`
     font-size: 1.5vw;
     position: absolute;
-    left: 20vw;
+    left: 15vw;
 `
-
-const When = styled.div`
+    
+const City = styled.div`
     font-size: 1.5vw;
     position: absolute;
-    left: 70vw;
+    left: 40vw;
 `
 
-const Event = styled.div`
-    padding: 0vh 0vw 10vh 0vw; 
+const Venue = styled.div`
+    font-size: 1.5vw;
+    position: absolute;
+    left: 65vw;
 `
-
-
-/*
-<div>
-                <StyledTitleList>{titles.map((title, i) => 
-                    <StyledTitle>{title}</StyledTitle>)}
-                </StyledTitleList>
-        
-        <div>
-
-<div>
-        {titles.map((title, i) => 
-            <StyledDataList>{events[i].map((data, i) =>
-                <StyledData> {data} </StyledData>)}
-            </StyledDataList>)}
-        
-        </div>*/

@@ -1,6 +1,9 @@
 import { React, Component} from "react";
 import Layout from "../components/layout";
 import YouTube from '../components/youtube';
+import ZoomBgImg from '../components/zoomBgImg';
+
+const imgName = "Video.png";
 
 class Video extends Component {
   
@@ -18,11 +21,10 @@ class Video extends Component {
   render() {
 
     return (
-      <div>
         <Layout>
-      </Layout>
       <YouTube/>
-    </div>
+      <ZoomBgImg imgName={imgName}/>
+      </Layout>
     );
   }
  

@@ -13,14 +13,11 @@ class Youtube extends React.Component {
     constructor(props) {
         super(props);
 
-        console.log("constructor");
         this.setState({ width: 600, height: 400 });
-
-
       }
       
       componentDidMount() {
-        console.log("didmount");
+        
         this.updateWindowDimensions();
         
         this.setState({ width: window.outerWidth, height: window.outerHeight });
@@ -29,12 +26,12 @@ class Youtube extends React.Component {
       }
       
       componentWillUnmount() {
-        console.log("unmount");
+        
         window.removeEventListener('resize', this.updateWindowDimensions);
       }
       
       updateWindowDimensions() {
-        console.log("update");
+        
         try{
           this.setState({ width: window.outerWidth, height: window.outerHeight });
         }
@@ -57,7 +54,7 @@ class Youtube extends React.Component {
     {
       return(<div/>);
     }
- //, list: "playlist" 
+ 
         return (
             <div>
                 <Player>

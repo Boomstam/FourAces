@@ -7,7 +7,7 @@ const facebook = "facebook.png";
 const facebookLink = "https://www.facebook.com/FourAcesGuitarQuartet/";
 
 const instagram = "instagram.png";
-const instagramLink = "https://www.instagram.com/fouraces_fouraces/";
+const instagramLink = "https://www.instagram.com/fouracesguitarquartet/";
 
 const youtube = "youtube.png";
 const youtubeLink = "https://www.youtube.com/user/FourAcesGQ";
@@ -44,7 +44,6 @@ function getLogos(data)
 
 function getImageByName(data, imgName)
 {
-    console.log(imgName);
     return data.allImageSharp.edges.find(
         obj => { 
           return obj.node.fluid.originalName === imgName;
@@ -77,27 +76,37 @@ export default () => (
 
             <StyledLogos>
 
-                <StyledLink href={getLinks(0)}>
+                <StyledLink 
+                    href={getLinks(0)}
+                    target="_blank">
                     <StyledLogo 
                         sizes={getLogos(data)[0]}/>
                 </StyledLink>
 
-                <StyledLink href={getLinks(1)}>
+                <StyledLink 
+                    href={getLinks(1)}
+                    target="_blank">
                     <StyledLogo 
                         sizes={getLogos(data)[1]}/>
                 </StyledLink>
 
-                <StyledLink href={getLinks(2)}>
+                <StyledLink 
+                    href={getLinks(2)}
+                    target="_blank">
                     <StyledLogo 
                         sizes={getLogos(data)[2]}/>
                 </StyledLink>
 
-                <StyledLink href={getLinks(3)}>
+                <StyledLink 
+                    href={getLinks(3)}
+                    target="_blank">
                     <StyledLogo 
                         sizes={getLogos(data)[3]}/>
                 </StyledLink>
 
-                <StyledLink href={getLinks(4)}>
+                <StyledLink 
+                    href={getLinks(4)}
+                    target="_blank">
                     <StyledLogo 
                         sizes={getLogos(data)[4]}/>
                 </StyledLink>

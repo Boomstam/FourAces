@@ -1,11 +1,10 @@
 import Img from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
-import storage from '../storage/storage'
-import { Html5Entities } from 'html-entities';
+import storage from '../storage/storage';
 
-const htmlEntities = new Html5Entities();
 const detailsType = "Details";
+const crossName = "Cross.png";
 
 class Details extends React.Component {
 
@@ -29,13 +28,20 @@ class Details extends React.Component {
       render() {
 
         var index = this.props.index;
-        //var background = storage.imageStorage.getImages()[4].node.sizes;
-        //var scene = storage.imageStorage.getImages()[3].node.sizes;
+        
         var scene = storage.imageStorage.getSceneByIndex(index);
+        var cross = storage.imageStorage.getImageByName(crossName);
+
+        //<ClickScreen onClick={this.handleClick.bind(this)}/>
         return(
           <div>
           <Curtain/>
-          <ClickScreen onClick={this.handleClick.bind(this)}/>
+
+          <CrossContainer
+            onClick={this.handleClick.bind(this)}>
+          <Cross sizes={cross}/>
+          </CrossContainer>
+
           <Content>
           <Composer>
               {storage.textStorage.getText(detailsType, index).frontmatter.composer}
@@ -50,13 +56,22 @@ class Details extends React.Component {
           )
         }
       }
-      /*
-       <Text>
-                  {htmlEntities.decode(storage.textStorage.getText(detailsType, index).html)} 
-                </Text>
-      */
 
 export default Details;
+
+const CrossContainer = styled.div`
+
+`
+
+const Cross = styled(Img)`
+  width: 3vw;
+  margin: 17vh 0vw 0vh 85vw;
+  z-index: 3;
+  cursor: pointer;
+  &:hover{
+    width: 4vw;
+  }
+`
 
 const Curtain = styled.div`
 background-color: rgba(200, 200, 200, 0.9);
@@ -71,23 +86,13 @@ background-color: rgba(200, 200, 200, 0.9);
     top: 0;
 `
 
-const ClickScreen = styled.div`
+/*const ClickScreen = styled.div`
     width: 100vw;
     height: 100vh;
     position: fixed;
     left: 0;
     top: 0;
     z-index: 999;
-`
-
-/*const Background = styled(Img)`
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0.7;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
 `*/
 
 const Content = styled.div`
@@ -115,7 +120,6 @@ margin: 0vh 0vw 0vh 15vw;
 width: 70vw;
 z-index: 1;
 `
-//left: 70vw;
 
 const Composer = styled.div`
 position: relative;

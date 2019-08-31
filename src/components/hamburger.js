@@ -8,6 +8,8 @@ const hamburgerImageName = "Arm.png";
 
 function hamburgerClick()
 {
+  console.log("hamburger click");
+
   state.menuToggler.toggleMenu();
 }
 
@@ -66,20 +68,20 @@ const StyledHamburger = styled.div`
 
 z-index: 999;
   position: fixed;
-  top: 1vh;
-  left: 1vw;
+  top: 2vh;
+  left: 2vw;
   overflow: visible;
-  width: 5vw;
+  width: 3vw;
   
   &:hover {
-    width: 6vw;
+    cursor: pointer;
   }
 
   @media (max-width: 650px) {
     width: 13vw;
   
     &:hover {
-      width: 15vw;
+      cursor: pointer;
     }
   }
   

@@ -10,12 +10,17 @@ const home = "/";
 
 class BackgroundImg extends React.Component {
 
+  constructor(props){
+
+    super(props);
+  }
+
   render() {
     
     if(typeof window !== 'undefined')
     {
     
-    const { images } = this.props;
+    let images = this.props.images;
     
     if(window.location.pathname === home)
     {
@@ -65,7 +70,6 @@ export default BackgroundImg;
 const Container = styled.div`
 
 `
-//zIndex:-3;
 
 const BgImg = styled(Img)`
 

@@ -12,9 +12,11 @@ function moveLeft()
 {
   if(typeof window !== 'undefined')
   {
-  let width = window.outerWidth;
-  
-  window.scrollTo(width * offsetMod, 0);
+    let width = window.outerWidth * offsetMod;
+    //console.log("movedLeft");
+    window.scrollTo(width, 0);
+  } else {
+    //console.log("didntMoveLeft");
   }
 }
 
@@ -28,10 +30,13 @@ function getImgNodeByName(data, name)
 }
 
 const IndexPage = ({ data }) => (
-  <div onLoad={moveLeft}>
+  <div 
+    onLoad={moveLeft}
+    onresize={moveLeft}>
+  <Layout style={{ zIndex: "0" }}>
+
   <ClickDetector coors={data.allMarkdownRemark.edges}/>
 
-  <Layout style={{ zIndex: "0" }}/>
   <HomeImg image={getImgNodeByName(data, "Schilderij.jpg")}/>
   
   <Overlay image={getImgNodeByName(data, "ScriabinCut.png")}/>
@@ -42,7 +47,9 @@ const IndexPage = ({ data }) => (
   <Overlay image={getImgNodeByName(data, "MozartCut.png")}/>
   <Overlay image={getImgNodeByName(data, "DebussyCut.png")}/>
   <Overlay image={getImgNodeByName(data, "RachmaninoffCut.png")}/>
-
+  
+  </Layout>
+  
   </div>
 
 )

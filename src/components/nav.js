@@ -1,74 +1,26 @@
 import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-import Hamburger from './hamburger';
 import Menu from './menu';
-import state from '../state/state';
-import storage from '../storage/storage';
-
-const bannerImgName = "Banner.png";
 
 class Nav extends React.Component {
-
-    constructor(props) {
-
-        super(props);
-
-        this.state = { isOpen: false };
-
-        this.valueChanged = this.valueChanged.bind(this);
-    }
-
-    componentDidMount() {
-        
-        if(window.innerWidth > storage.constStorage.smartphoneWidth)
-        {
-            this.setState({ isOpen: true });
-        }
-        state.menuToggler.setReRenderCallback(this.valueChanged);
-    }
-
-    valueChanged() {
-
-        let menuIsOpen = state.menuToggler.isOpen;
-
-        this.setState({ isOpen: menuIsOpen });
-    }
 
     render() {
 
         const image = this.props.bannerImg;
 
-        if (this.state.isOpen) {
-
             return (
-                <div>
+                <div style={{ fontFamily: 'Nunito' }}>
                     <Banner
               sizes={image}
               style={{
               position: "fixed"
-              
-            }}/>
-                    <Menu>
-                    </Menu>
-                    <Hamburger>
-                    </Hamburger>
+                    }}/>
+                    <Menu/>
 
                 </div>
             );
-
-        } else {
-
-            return (
-                <div>
-                    
-                    <Hamburger>
-                    </Hamburger>
-                </div>
-            );
-
         }
-    }
 }
 
 export default Nav;
@@ -81,7 +33,7 @@ opacity: 0.4;
     background-color: transparent;
     width: 80vw;
     height: 14vh;
-    left: 7vw;
+    left: 10vw;
 }
 width: 100vw;
 height: 100vh;

@@ -1,7 +1,11 @@
 import React from 'react';
 import Layout from '../components/layout';
 import ContactInfo from '../components/contactInfo';
-import styled from 'styled-components'; 
+import styled from 'styled-components';
+import ZoomBgImg from '../components/zoomBgImg';
+
+const imgName = "Contact.png";
+const style = { width: "100vw", transform:"translateY(-50vh)" };
 
 export default class Contact extends React.Component
 {
@@ -9,7 +13,10 @@ export default class Contact extends React.Component
     {
             return(
                 <Layout>
-                <ContactInfo/>
+                    <ContactInfo/>
+                    <ZoomBgImg 
+                        imgName={imgName}
+                        customStyle={style}/>
                 </Layout>)
     }
 }

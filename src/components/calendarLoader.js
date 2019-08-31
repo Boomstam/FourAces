@@ -1,14 +1,10 @@
 import React from 'react';
-import timeFormatter from '../helpers/timeFormatter'
+import eventFormatter from '../helpers/eventFormatter';
 import EventList from './eventList';
-import storage from '../storage/storage'
+import storage from '../storage/storage';
 
 //de2aikh7oknjsbhhc889m40nss@group.calendar.google.com
 //fouracesquartet@gmail.com
-const refString = "href=\"";
-const smallerThan = "<";
-const greaterThan = ">";
-const quotes = '\"'
 
 export default class CalendarLoader extends React.Component
 {
@@ -49,7 +45,6 @@ export default class CalendarLoader extends React.Component
 
        makeApiCall() {
 
-        var eventData = [];
         var today = new Date(); //today date
         storage.calStorage.setCallback(this.setLoaded.bind(this));
 
@@ -61,36 +56,8 @@ export default class CalendarLoader extends React.Component
                 'timeMin': today.toISOString(), //gathers only events not happened yet
                 'maxResults': 10, 
                 'orderBy': 'startTime'});
-        request.execute(function (resp) {
-            for (var i = 0; i < resp.items.length; i++) {
-
-                var item = resp.items[i];
-
-                var linkText = item.description;
-                var link = item.description;
-
-                if(item.description !== undefined)
-                {
-                    if(link.indexOf(refString) === -1){
-                        link = null;
-                    } else {
-                        link = link.split(refString)[1];
-                        link = link.split(quotes)[0];
-
-                        linkText = linkText.split(greaterThan)[1];
-                        linkText = linkText.split(smallerThan)[0];
-                    }
-                }
-                var date = item.start;
-
-                if(date !== undefined)
-                {
-                    date = timeFormatter(item);
-                }
-                eventData[i] = 
-                    [item.summary, date, link, linkText, item.location];
-            }
-            storage.calStorage.setData(eventData);
+        request.execute(function (rawData) {
+            eventFormatter(rawData);
             });
         });
     }
@@ -109,6 +76,8 @@ export default class CalendarLoader extends React.Component
       }
 }
 
+
+//AUTHORISATION CODE
     //--------------------- end
     /*
     //--------------------- client CALL

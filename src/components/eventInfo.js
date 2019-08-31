@@ -1,5 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+import storage from '../storage/storage';
+import Img from 'gatsby-image';
+
+const crossName = "Cross.png";
+const mapsLink = "https://www.google.com/maps/search/?api=1&query=";
+
+function getMapsLink(info){
+
+    let link = mapsLink + info.location;
+
+    link = encodeURI(link);
+
+    return link;
+}
 
 export default class EventInfo extends React.Component
 {
@@ -9,67 +23,82 @@ export default class EventInfo extends React.Component
     }
 
     handleClick()
-      { 
-        console.log("Clicked");
-
+      {
         this.props.customClick();
       }
 
     render()
     {
-        var title = this.props.info[0];
+        let cross = storage.imageStorage.getImageByName(crossName);
+        let title = this.props.info[0];
 
-        var dateTitle = this.props.titles[2];
-        var date = this.props.info[1];
+        let timeTitle = this.props.titles[2];
+        let timeStamp = this.props.info.timeStamp;
 
-        var linkTitle = this.props.titles[3];
-        var link = this.props.info[2];
-        var linkText = this.props.info[3];
+        let linkTitle = this.props.titles[3];
+        let link = this.props.info.link;
+        let linkText = this.props.info.linkText;
 
-        var locationTitle = this.props.titles[4];
-        var location = this.props.info[4];
+        let locationTitle = this.props.titles[4];
+        let location = this.props.info.location;
 
         return(
-            <div onClick={(e) => {this.handleClick()}}>
+            <div>
+
+            <CrossContainer
+                onClick={this.handleClick.bind(this)}>
+            <Cross sizes={cross}/>
+          </CrossContainer>
 
             <Title>{title}</Title>
 
             <SpaceBetween/>
 
-            <SubTitle>{dateTitle}</SubTitle>
-            <Date>{date}</Date>
+            <SubTitle>{timeTitle}</SubTitle>
+            <Time>{timeStamp}</Time>
 
             <SpaceBetween/>
 
             <SubTitle>{linkTitle}</SubTitle>
             
-            <Tickets href={link}>{linkText}</Tickets>
+            <Tickets 
+                href={link}
+                target="_blank">
+                {linkText}
+            </Tickets>
 
             <SpaceBetween/>
 
             <SubTitle>{locationTitle}</SubTitle>
-            <Location>{location}</Location>
-
-            <ClickScreen 
-            onClick={(e) => {this.handleClick()}}/>
+            <Location 
+                href={getMapsLink(this.props.info)}
+                target="_blank">
+                {location}
+            </Location>
 
             </div>
         )
     }
 }
 
-//position: fixed;
-const ClickScreen = styled.div`
-    position: fixed;
+const CrossContainer = styled.div`
+    position: absolute;    
+    left: 75vw;
+`
+
+const Cross = styled(Img)`
+    width: 3vw;
     z-index: 3;
-    width: 100vw;
-    height: 100vh;
+    cursor: pointer;
+    &:hover{
+        width: 4vw;
+    }
 `
 
 const Title = styled.div`
     font-size: 2vw;
     font-weight: 700;
-    margin: 15vh 0vw 5vh 40vw
+    margin: 20vh 0vw 5vh 40vw
 `
 
 const SubTitle = styled.div`
@@ -82,21 +111,17 @@ const SpaceBetween = styled.div`
     margin: 7vh 0vw 0vh 0vw;
 `
 
-const Date = styled.div`
-    font-size: 1.5vw;
+const Time = styled.div`
     left: 20vw;
-
     text-align: center;
 `
 
 const Tickets = styled.a`
     text-align: center;
     display: block;
-    width: 10vw;
-    margin: 0vh 0vw 0vh 45vw;
-    z-index: 4;
 `
 
-const Location = styled.div`
+const Location = styled.a`
     text-align: center;
+    display: block;
 `

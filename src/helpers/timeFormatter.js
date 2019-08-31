@@ -1,14 +1,19 @@
+const dateTimeSeparator = '-';
+
 export default function timeFormatter(item)
 {
     var allDay = item.start.date? true : false;
     var startDT = allDay ? item.start.date : item.start.dateTime;
     var dateTime = startDT.split("T"); //split date from time
-    var date = dateTime[0].split("-"); //split yyyy mm dd
-    var startYear = date[0];
+    var date = dateTime[0].split(dateTimeSeparator); //split yyyy mm dd
+
+    date = date.reverse();
+    date = date.join(dateTimeSeparator);
+    /*var startYear = date[0];
     var startMonth = monthString(date[1]);
     var startDay = date[2];
     var startDateISO = new Date(startMonth + " " + startDay + ", " + startYear + " 00:00:00");
-    var startDayWeek = dayString(startDateISO.getDay());
+    var startDayWeek = dayString(startDateISO.getDay());*/
 
     var time = dateTime[1].split(":"); //split hh ss etc...
     var startHour = time[0];
@@ -19,7 +24,7 @@ export default function timeFormatter(item)
     //console.log("Date_" + date);
     //console.log("startDT_" + startDT);
 
-    var dateString = dateTime[0] + " - " + hour;
+    var dateString = date + " - " + hour;
 
     return dateString;
 }

@@ -118,7 +118,7 @@ export default () => (
             }
 
         }
-      `} 
+      `}
       
         render={data => (
             <StyledLangs onLoad={onLoad()}>
@@ -143,6 +143,8 @@ const StyledLangs = styled.div`
     width: 7vw;
     left: 92vw;
 }
+    
+
     position: fixed;
     left: 83vw;
     top: 0vh;
@@ -153,6 +155,9 @@ const StyledLangs = styled.div`
 
 const Container = styled.div`
 display: inline;
+&:hover{
+    cursor: pointer;
+}
 `
 
 const Flag = styled(Img)`

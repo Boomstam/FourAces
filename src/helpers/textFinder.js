@@ -1,6 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import storage from '../storage/storage'
+import storage from '../storage/storage';
 
 function loadText(data)
 {
@@ -33,6 +33,34 @@ const TextFinder = ({ children }) => (
             bookingOther
 
             calTitles
+
+            priceTag
+            totalTag
+            linkText
+            greeting
+            order
+            odysseeProduct
+            odysseePrice
+            forAcesProduct
+            forAcesPrice
+            tabulaRasaProduct
+            tabulaRasaPrice
+            puzzleProduct
+            puzzlePrice
+            combo1Product
+            combo1Price
+            combo2Product
+            combo2Price
+            total
+            adress
+            shippingCost
+            account
+            goodbye
+            tracksTitle
+            odysseeTracks
+            forAcesTracks
+            tabulaRasaTracks
+            puzzleInfo
           }
           html
         }

@@ -16,7 +16,6 @@ class CompDetails extends React.Component {
         var scene = storage.imageStorage.getSceneByIndex(index);
 
         var even = ((index % 2) === 0);
-        console.log("even_" + even);
 
         if(even)
         {

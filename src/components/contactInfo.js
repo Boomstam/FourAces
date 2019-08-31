@@ -1,12 +1,22 @@
 import React from 'react'
 import styled from 'styled-components';
-import storage from '../storage/storage'
+import storage from '../storage/storage';
 
 const infoType = "Info";
 const index = 1;
 
 const mailAdress = "info@fouracesgq.com"
 const mailListHyperLink = "https://us3.list-manage.com/subscribe?u=1f3dc7d1ffbcf14d26a22133d&id=4967e12432";
+
+const loge35Mail = "info@loge35.be";
+const mailtoKey = "mailto:"
+const loge35Phone = "+32 475 45 59 59";
+const telKey = "tel:"
+const mcDanielMail = "danmcdaniel@live.com";
+const mcDanielSite = "https://www.danmcdanielmanagement.com/four-aces";
+const mcDanielSiteTitle = "www.danmcdanielmanagement.com";
+
+const dotSeparator = '•';
 
 export default class ContactInfo extends React.Component
 {
@@ -17,28 +27,67 @@ export default class ContactInfo extends React.Component
 
     render(){
         var info = storage.textStorage.getText(infoType, index);
-
+        //console.log(JSON.stringify(info));
         return(
             <div>
                 <TopMargin/>
+
                 <Title>{info.frontmatter.infoTitle}</Title>
-                <Mail href="mailto:info@fouracesgq.com">{mailAdress}</Mail>
+                <Mail href="mailto:info@fouracesgq.com" 
+                     target="_blank">
+                     {mailAdress}
+                     </Mail>
 
                 <Title>{info.frontmatter.mailTitle}</Title>
                 <MailingListContainer>
                 <Info>{info.frontmatter.mailList}</Info>
-                
-                <MailingList href={mailListHyperLink}>{info.frontmatter.mailListLink}</MailingList>
+                    <MailingList 
+                        href={mailListHyperLink}
+                        target="_blank">
+                        {info.frontmatter.mailListLink}
+                    </MailingList>
                 </MailingListContainer>
 
-                <Info></Info>
+                <Title>{info.frontmatter.bookingsTitle}</Title>
+                <BookingsContainer>
+                    <BookingLine>
+                        <BookingText>{info.frontmatter.bookingBelgium}</BookingText>
+                        <Dot>{dotSeparator}</Dot>
+                        <BookingLink 
+                            href={mailtoKey + loge35Mail}
+                            target="_blank">
+                            {loge35Mail}
+                         </BookingLink>
+                         <Dot>{dotSeparator}</Dot>
+                        <BookingLink
+                            href={telKey + loge35Phone}
+                            target="_blank">
+                                {loge35Phone}
+                            </BookingLink>
+                </BookingLine>
+                <BookingLine>
+                <BookingText>{info.frontmatter.bookingUSA}</BookingText>
+                        <Dot>{dotSeparator}</Dot>
+                        <BookingLink 
+                            href={mailtoKey + mcDanielMail}
+                            target="_blank">
+                            {mcDanielMail}
+                         </BookingLink>
+                         <Dot>{dotSeparator}</Dot>
+                         <BookingLink
+                            href={mcDanielSite}
+                            target="_blank">
+                                {mcDanielSiteTitle}
+                            </BookingLink>
+                            </BookingLine>
+                </BookingsContainer>
             </div>
         )
     }
 }
 
 const TopMargin = styled.div`
-    margin: 30vh 0vw 0vh 0vw;
+    margin: 20vh 0vw 0vh 0vw;
 `
 
 const Title = styled.div`
@@ -59,7 +108,6 @@ const Info = styled.div`
         font-size: 1.5vw;
       }
     font-size: 3vw;
-    font-weight: 600;
 `
 
 const Mail = styled.a`
@@ -71,7 +119,6 @@ const Mail = styled.a`
         font-size: 1.5vw;
       }
     font-size: 3vw;
-    font-weight: 600;
 `
 
 const MailingListContainer = styled.div`
@@ -83,7 +130,6 @@ const MailingListContainer = styled.div`
         font-size: 1.5vw;
       }
     font-size: 3vw;
-    font-weight: 600;
 `
 
 const MailingList = styled.a`
@@ -96,5 +142,33 @@ const MailingList = styled.a`
         font-size: 1.5vw;
       }
     font-size: 3vw;
-    font-weight: 600;
+`
+
+const BookingsContainer = styled.div`
+
+    @media (min-width: 650px) {
+        font-size: 1.5vw;
+    }
+    font-size: 3vw;
+`
+
+const BookingLine = styled.div`
+
+      text-align: center;
+`
+
+const BookingText = styled.div`
+
+    display: inline;
+`
+
+const BookingLink = styled.a`
+    display: inline;
+
+`
+
+const Dot = styled.div`
+    display: inline;
+    margin: 0vh 1vw 0vh 1vw;
+
 `

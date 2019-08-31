@@ -3,7 +3,6 @@ const sceneNames = ["ScriabinScene.png", "BizetScene.png", "ChopinScene.png", "B
 
 export default class ImageStorage {
 
-
     constructor()
     {
         this.getImages = this.getImages.bind(this);
@@ -44,10 +43,6 @@ export default class ImageStorage {
 
     setImages(images)
     {
-        /*console.log("setImageStorage");
-        images.forEach(img => {
-            console.log(JSON.stringify(img))
-        });*/
         this.images = images;
     }
 }

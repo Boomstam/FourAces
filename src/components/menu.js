@@ -11,55 +11,41 @@ class Menu extends React.Component
     {
         super(props);
 
-        this.state = { mediaHover: false, infoHover: false };
+        this.state = { mediaHover: false };
     }
 
     clicked(name)
     {
-        console.log("clicked_" + name);
-
         if(name === "media")
         {
-            this.setState({ mediaHover : !this.state.mediaHover, infoHover: false });
-        }
-        if(name === "info")
-        {
-            this.setState({ mediaHover : false, infoHover: !this.state.infoHover });
+            this.setState({ mediaHover : !this.state.mediaHover });
         }
     }
 
     mouseEntered(name){
 
-        console.log("mouse entered_" + name);
-
         if(name === "media")
         {
-            this.setState({ mediaHover : true, infoHover: false });
-        }
-        if(name === "info")
-        {
-            this.setState({ mediaHover : false, infoHover: true });
+            this.setState({ mediaHover : true });
         }
     }
 
     mouseLeft(){
         
-        this.setState({ mediaHover : false, infoHover: false });
-
-        console.log("mouse left");
+        this.setState({ mediaHover : false });
     }
 
     render(){
         
         const home = "/";
+        const project = "/project";
         const calendar = "/calendar";
         const audio = "/audio";
         const video = "/video";
-        const project = "/project";
-        const bio = "/bio";
-        const program = "/program";
-        const contact = "/contact";
+        const photos = "/photos";
         const press = "/press";
+        const shop = "/shop"
+        const contact = "/contact";
         
         var dropdownState;
 
@@ -68,10 +54,6 @@ class Menu extends React.Component
             if(this.state.mediaHover)
             {
                 dropdownState = "media";
-            }
-            if(this.state.infoHover)
-            {
-                dropdownState = "info";
             }
         }
 
@@ -82,98 +64,73 @@ if(dropdownState === "media")
             <StyledLink to={home}>
                {storage.textStorage.getText(textType, 0)}
             </StyledLink>
-            <StyledLink to={calendar}>
+
+            <StyledLink to={project}>
             {storage.textStorage.getText(textType, 1)}
             </StyledLink>
+
+            <StyledLink to={calendar}>
+            {storage.textStorage.getText(textType, 2)}
+            </StyledLink>
+
             <Dropdown 
             onClick={(e) => {this.clicked("media")}}
              onMouseEnter={(e) => {this.mouseEntered("media")}}
              onMouseLeave={(e) => {this.mouseLeft("media")}}>
-                {storage.textStorage.getText(textType, 2)}
+                {storage.textStorage.getText(textType, 3)}
             <DropdownItem to={audio}>
-            {storage.textStorage.getText(textType, 3)}
-            </DropdownItem>
-            <DropdownItem to={video}>
             {storage.textStorage.getText(textType, 4)}
             </DropdownItem>
-            </Dropdown>
-            <StyledLink to={project}>
+            <DropdownItem to={video}>
             {storage.textStorage.getText(textType, 5)}
-            </StyledLink>
-            <Dropdown
-            onClick={(e) => {this.clicked("info")}}
-            onMouseEnter={(e) => {this.mouseEntered("info")}}
-            onMouseLeave={(e) => {this.mouseLeft("info")}}>
-                {storage.textStorage.getText(textType, 6)}
-            </Dropdown>
-        </StyledMenu>    
-    );
-}
-if(dropdownState === "info")
-{
-    return(
-        <StyledMenu> 
-            <StyledLink to={home}>
-            {storage.textStorage.getText(textType, 0)}
-            </StyledLink>
-            <StyledLink to={calendar}>
-            {storage.textStorage.getText(textType, 1)}
-            </StyledLink>
-            <Dropdown
-            onClick={(e) => {this.clicked("media")}}
-            onMouseEnter={(e) => {this.mouseEntered("media")}}
-            onMouseLeave={(e) => {this.mouseLeft("media")}}>
-                {storage.textStorage.getText(textType, 2)}
-            </Dropdown>
-            <StyledLink to={project}>
-                {storage.textStorage.getText(textType, 5)}
-            </StyledLink>
-            <Dropdown
-            onClick={(e) => {this.clicked("info")}}
-            onMouseEnter={(e) => {this.mouseEntered("info")}}
-            onMouseLeave={(e) => {this.mouseLeft("info")}}>
-                {storage.textStorage.getText(textType, 6)}
-            <DropdownItem to={bio}>
-            {storage.textStorage.getText(textType, 7)}
             </DropdownItem>
-            <DropdownItem to={program}>
-            {storage.textStorage.getText(textType, 8)}
-            </DropdownItem>
-            <DropdownItem to={contact}>
-            {storage.textStorage.getText(textType, 9)}
+            <DropdownItem to={photos}>
+            {storage.textStorage.getText(textType, 6)}
             </DropdownItem>
             <DropdownItem to={press}>
-            {storage.textStorage.getText(textType, 10)}
+            {storage.textStorage.getText(textType, 7)}
             </DropdownItem>
             </Dropdown>
-        </StyledMenu>
+
+            <StyledLink to={shop}>
+            {storage.textStorage.getText(textType, 8)}
+            </StyledLink>
+
+            <StyledLink to={contact}>
+            {storage.textStorage.getText(textType, 9)}
+            </StyledLink>
+        </StyledMenu>    
     );
-}
-else
+} else
 {
     return(
         <StyledMenu> 
             <StyledLink to={home}>
                {storage.textStorage.getText(textType, 0)}
             </StyledLink>
-            <StyledLink to={calendar}>
+
+            <StyledLink to={project}>
             {storage.textStorage.getText(textType, 1)}
             </StyledLink>
+
+            <StyledLink to={calendar}>
+            {storage.textStorage.getText(textType, 2)}
+            </StyledLink>
+
             <Dropdown
             onClick={(e) => {this.clicked("media")}}
             onMouseEnter={(e) => {this.mouseEntered("media")}}
             onMouseLeave={(e) => {this.mouseLeft("media")}}>
-                {storage.textStorage.getText(textType, 2)}
+                {storage.textStorage.getText(textType, 3)}
             </Dropdown>
-            <StyledLink to={project}>
-            {storage.textStorage.getText(textType, 5)}
+            
+            <StyledLink to={shop}>
+            {storage.textStorage.getText(textType, 8)}
             </StyledLink>
-            <Dropdown
-            onClick={(e) => {this.clicked("info")}}
-            onMouseEnter={(e) => {this.mouseEntered("info")}}
-            onMouseLeave={(e) => {this.mouseLeft("info")}}>
-                {storage.textStorage.getText(textType, 6)}
-            </Dropdown>
+
+            <StyledLink to={contact}>
+            {storage.textStorage.getText(textType, 9)}
+            </StyledLink>
         </StyledMenu>
     );
 }
@@ -182,7 +139,7 @@ else
 }
 
 const StyledMenu = styled.div`
-    font-weight: 1000;
+    font-weight: 400;
     font-size: 7vw;
     z-index: 999;
     position: fixed;
@@ -192,8 +149,7 @@ const StyledMenu = styled.div`
     
     @media (min-width: 650px) {
       margin: 2vh 0vw 0vh 25vw;
-      font-weight: 1000;
-      font-size: 2.5vw;
+      font-size: 2vw;
     }
 `
 /*
@@ -220,8 +176,7 @@ const StyledLink = styled(Link)`
         text-decoration-line: underline;
     }
 ` 
-//background-image: none;
-//background-image: radial-gradient(rgba(222,224,236,1), transparent);
+
 const Dropdown = styled.div`
     
     &:hover{
@@ -230,12 +185,7 @@ const Dropdown = styled.div`
     padding: 0vh 1vw 0vh 1vw;
     display: inline-grid;
 `
-/* 
-    @media (min-width: 650px) {
-    font-weight: 1000;
-    font-size: 8vw;
-    }
-*/
+
 const DropdownItem = styled(Link)`
 @media (max-width: 650px) {
     font-weight: 800;

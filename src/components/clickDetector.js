@@ -4,13 +4,15 @@ import Details from './details';
 import Media from 'react-media'
 import storage from '../storage/storage'
 
+const defaultPointer = "default";
+const hoverPointer = "pointer";
+
 const imgWidth = 512;
-const imgHeight = 457;// 458?
-const aspectRatio = 1.118610421836228;
+const imgHeight = 457;
+//const aspectRatio = 1.118610421836228;
 
 const pixelMapSizeThresh = 99999;//used to filter the pixel map from the other .md files, since its waaay bigger. 
-
-const smartphoneMod = 1 / 2.2;// based on the 220vw of the smartphone img
+const smartphoneMod = 1 / 2.2;// based on the 220vw of the smartphone img and 100vw desktop width
 
 var coorParser = undefined;
 
@@ -21,14 +23,12 @@ class ClickDetector extends React.Component {
         super(props);
 
         this.reset = this.reset.bind(this);
-        
-        
       }
   
   componentDidMount() {
     this.updateWindowDimensions();
 
-    this.setState({ index: -1, width: window.outerWidth });
+    this.setState({ index: -1, width: window.outerWidth, pointer: defaultPointer });
 
     window.addEventListener('resize', this.updateWindowDimensions);
   }
@@ -40,23 +40,16 @@ class ClickDetector extends React.Component {
   updateWindowDimensions() {
     try{
 
-      this.setState({ index: -1, width: window.outerWidth });
+      this.setState({ index: -1, width: window.outerWidth, pointer: defaultPointer });
     }
     catch{}
   }
 
     handleClick = (event) =>
     {
-      let sizeMod = this.getSizeMod();
-      
-      let xCoor = event.nativeEvent.offsetX * sizeMod;
-      let yCoor = event.nativeEvent.offsetY * sizeMod;
+      let coorIndex = this.getCoorIndex(event);
 
-      yCoor = imgHeight - yCoor;
-
-      let coorIndex = coorParser.getCoorIndex(xCoor, yCoor);
-
-      this.setState({ index: coorIndex, width: window.outerWidth });
+      this.setState({ index: coorIndex, width: window.outerWidth, pointer: this.state.pointer });
 
       if(coorIndex > -1)
       {
@@ -69,11 +62,44 @@ class ClickDetector extends React.Component {
       }
     }
 
+    handleHover = (event) =>
+    {
+      let coorIndex = this.getCoorIndex(event);
+      
+      let currentPointer = defaultPointer;
+
+      if(coorIndex > -1)
+      {
+        currentPointer = hoverPointer;
+      }
+      this.setState({ index: this.state.index, width: this.state.width, pointer: currentPointer });
+
+      //console.log("CoorIndex_" + coorIndex);
+    }
+
     reset = () =>
     {
       this.setState({ index: -1, width: window.outerWidth });
     }
   
+  getCoorIndex(event) {
+
+    let sizeMod = this.getSizeMod();
+    let xCoor = event.nativeEvent.offsetX * sizeMod;
+    let yCoor = event.nativeEvent.offsetY * sizeMod;
+
+    yCoor = imgHeight - yCoor;
+
+
+    let coorIndex = -1;
+
+    try{
+      coorIndex = coorParser.getCoorIndex(xCoor, yCoor);
+    } catch{}
+
+    return coorIndex;
+  }
+
   getSizeMod() 
   {
     if(window.outerWidth > storage.constStorage.smartphoneWidth)
@@ -102,12 +128,12 @@ class ClickDetector extends React.Component {
     render() {
         
       this.setCoors();
-      //console.log(this.state);
+      
       if(this.state === null)
       {
         return (<div/>);
       }
-      //console.log(this.state.index);
+      
       if(this.state.index >= 0)
       {
         return (
@@ -126,6 +152,7 @@ class ClickDetector extends React.Component {
           {matches =>
             matches ? (
               <div onClick={(e) => {this.handleClick(e)}}
+                   onMouseMove={(e) => {this.handleHover(e)}}
           style=
           {{
               position: "absolute",
@@ -133,7 +160,8 @@ class ClickDetector extends React.Component {
               top: 0,
               width: "100vw",
               height:"90vw",
-              zIndex: "1"
+              zIndex: "1",
+              cursor: this.state.pointer
               }}>
       </div>
             ) : (
@@ -156,14 +184,3 @@ class ClickDetector extends React.Component {
 }
 
 export default ClickDetector;
-
-/*
-setCoors() {
-    if (coorParser == undefined) {
-      coorParser = new CoorParser();
-    }
-    const { coors } = this.props;
-    coorParser.setCoors(coors[pixelMapIndex].node, imgWidth, imgHeight);
-  }
-  
-  */

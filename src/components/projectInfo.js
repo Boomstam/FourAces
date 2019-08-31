@@ -43,13 +43,13 @@ const DetailContainer = styled.div`
 `
 
 const Title = styled.div`
-    font-size: 3vmax;
+    font-size: 3vw;
   font-weight: 700;
   margin: 0vh 0vw 10vh 30vw
 `
 
 const Intro = styled.div`
-font-size: 1.5vmax;
+font-size: 1.5vw;
   font-weight: 400;
   
   width: 60vw;
