@@ -1,14 +1,20 @@
-import { Link } from 'gatsby';
 import React from 'react';
+import { navigate } from "gatsby";
 
 const home = '/';
 
+function handleLoad(){
+
+    navigate(home);
+}
+
 export default class About extends React.Component {
+
 
     render(){
 
         return(
-            <Link to={home}/>
+            <div onLoad={handleLoad()}/>
         )
     }
 }

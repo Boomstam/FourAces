@@ -1,14 +1,19 @@
-import { Link } from 'gatsby';
+import { navigate } from "gatsby";
 import React from 'react';
 
 const home = '/';
+
+function handleLoad(){
+
+    navigate(home);
+}
 
 export default class Phone extends React.Component {
 
     render(){
 
         return(
-            <Link to={home}/>
+            <div onLoad={handleLoad()}/>
         )
     }
 }
