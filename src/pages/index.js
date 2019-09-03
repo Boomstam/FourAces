@@ -1,12 +1,26 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import PropTypes from 'prop-types'
-import Layout from '../components/layout'
+import React from 'react';
+import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import Layout from '../components/layout';
 import HomeImg from '../components/homeImg';
 import Overlay from '../components/overlay';
 import ClickDetector from '../components/clickDetector';
+import { navigate } from 'gatsby';
 
 const offsetMod = 0.57;
+
+var firstLoad = true;
+const redirectPage = "/phone"
+
+function redirect(){
+
+  if(firstLoad){
+
+    navigate(redirectPage);
+
+    firstLoad = false;
+  }
+}
 
 function moveLeft()
 {
@@ -32,6 +46,7 @@ function getImgNodeByName(data, name)
 const IndexPage = ({ data }) => (
   <div 
     onLoad={moveLeft}
+    onLoad={redirect}
     onresize={moveLeft}>
   <Layout style={{ zIndex: "0" }}>
 
