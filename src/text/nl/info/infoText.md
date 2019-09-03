@@ -10,5 +10,7 @@ bookingsTitle: "Boekingen"
 bookingBelgium: "België & Nederland"
 bookingUSA: "USA & Canada"
 bookingOther: "Andere landen"
+pressKitTitle: "Persmap"
+pressKitLink: "Download hier"
 ---
 Zip

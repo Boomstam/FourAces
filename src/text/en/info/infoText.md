@@ -10,5 +10,7 @@ bookingsTitle: "Bookings"
 bookingBelgium: "Belgium & the Netherlands"
 bookingUSA: "USA & Canada"
 bookingOther: "Other countries"
+pressKitTitle: "Press Kit"
+pressKitLink: "Download here"
 ---
 Zip

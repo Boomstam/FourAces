@@ -7,7 +7,7 @@ import ZoomBgImg from '../components/zoomBgImg';
 const imgName = "Contact.png";
 const style = { width: "100vw", transform:"translateY(-50vh)" };
 
-export default class Contact extends React.Component
+/*export default class Contact extends React.Component
 {
     render()
     {
@@ -18,13 +18,38 @@ export default class Contact extends React.Component
                         imgName={imgName}
                         customStyle={style}/>
                 </Layout>)
-    }
-}
 
-const Title = styled.div`
+                
+    }
+}*/
+
+export default ({ data }) => (  
+    <Layout>
+        <ContactInfo
+              pressKits={data}/>
+    
+        <ZoomBgImg 
+              imgName={imgName}
+              customStyle={style}/>
+      </Layout>
+    )
+
+    export const query = graphql`  
+    query {
+          
+          allFile(filter: { extension: { eq: "zip" } }) {
+            edges {
+              node {
+                publicURL
+              }
+            }
+          }
+      }
+`
+/*const Title = styled.div`
 
 `
 
 const Info = styled.div`
 
-`
+`*/

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import storage from '../storage/storage';
+import state from '../state/state';
 
 const infoType = "Info";
 const index = 1;
@@ -23,11 +24,24 @@ export default class ContactInfo extends React.Component
     constructor(props)
     {
         super(props);
+
+        console.log(this.props.pressKits)
     }
 
     render(){
-        var info = storage.textStorage.getText(infoType, index);
+        let info = storage.textStorage.getText(infoType, index);
         //console.log(JSON.stringify(info));
+
+        let pressKitIndex = 0;
+
+        if(state.languageState.getLanguage() === false){
+            
+            pressKitIndex = 1;
+        }
+        let pressKitURL = this.props.pressKits.allFile.edges[pressKitIndex].node.publicURL;
+
+        console.log("URL_" + pressKitURL)
+
         return(
             <div>
                 <TopMargin/>
@@ -81,13 +95,20 @@ export default class ContactInfo extends React.Component
                             </BookingLink>
                             </BookingLine>
                 </BookingsContainer>
+
+                <Title>{info.frontmatter.pressKitTitle}</Title>
+                <PressKit
+                    href={pressKitURL}>
+                    {info.frontmatter.pressKitLink}
+                </PressKit>
+
             </div>
         )
     }
 }
 
 const TopMargin = styled.div`
-    margin: 20vh 0vw 0vh 0vw;
+    margin: 15vh 0vw 0vh 0vw;
 `
 
 const Title = styled.div`
@@ -171,4 +192,11 @@ const Dot = styled.div`
     display: inline;
     margin: 0vh 1vw 0vh 1vw;
 
+`
+
+const PressKit = styled.a`
+
+    display: block;
+    text-align: center;
+    margin: 0vh 0vw 10vh 0vw;
 `

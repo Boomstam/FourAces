@@ -31,6 +31,8 @@ const TextFinder = ({ children }) => (
             bookingBelgium
             bookingUSA
             bookingOther
+            pressKitTitle
+            pressKitLink
 
             calTitles
 

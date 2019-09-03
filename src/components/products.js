@@ -148,7 +148,7 @@ export default class Products extends React.Component {
 
 const ProductsList = styled.div`
 
-    margin: 20vh 0vw 20vh 0vw;
+    margin: 15vh 0vw 20vh 0vw;
     text-align: center;
 `
 
