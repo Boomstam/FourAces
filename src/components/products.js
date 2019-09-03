@@ -26,8 +26,6 @@ export default class Products extends React.Component {
         let orderData = [0, 0, 0, 0]
         orderData[index] = orderData[index] + 1;
 
-        console.log("order product_" + orderData);
-
         this.setState({ currentProduct: -2, orderData: orderData });
     }
 
@@ -45,7 +43,6 @@ export default class Products extends React.Component {
             currentProduct = index;
         } 
         this.setState({ currentProduct: currentProduct, orderData: null });
-        //console.log("click_" + this.state.currentProduct);
     }
 
     getProductData(text){
@@ -89,7 +86,6 @@ export default class Products extends React.Component {
             odysseeData,
             puzzleData,
         ];
-        console.log("prodcutData_" + JSON.stringify(productData));
         return productData;
     }
 
@@ -198,9 +194,8 @@ const ProductImg = styled(Img)`
 
 const OrderLink = styled.div`
     &:hover{
-        font-weight: 900;
+        text-decoration: underline;
     }
     margin: 3vh 0vw 2vh 0vw;
-    text-decoration: underline;
     cursor: pointer;
 `

@@ -34,9 +34,16 @@ const TextFinder = ({ children }) => (
 
             calTitles
 
+            subject
+            namePlaceholder
+            addressPlaceholder
+            nameTag
+            addressTag
             priceTag
             totalTag
             linkText
+            disclaimer
+            proceedText
             greeting
             order
             odysseeProduct
@@ -52,7 +59,7 @@ const TextFinder = ({ children }) => (
             combo2Product
             combo2Price
             total
-            adress
+            address
             shippingCost
             account
             goodbye

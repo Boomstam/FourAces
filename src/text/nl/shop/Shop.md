@@ -6,11 +6,16 @@ linkText: "Bestel hier"
 priceTag: "Prijs:"
 totalTag: "Totaal:"
 proceedText: "Verder"
+nameTag: "Uw Naam"
+namePlaceholder: "bv. Claude Debussy"
+addressTag: " Uw Adres: "
+subject: "Informatie bestelling"
+addressPlaceholder: "bv. Avenue du Bois de Boulogne 80, 75016 Paris, France"
 disclaimer: "Als u een keuze heeft gemaakt, klik dan 'Verder'. We genereren een berichtje om samen te bekijken hoe de bestelling geleverd zal worden - via post, bij een concert, of gewoon aan huis geleverd door een van ons... Na onze reactie kan u dan desgewenst een overschrijving doen."
 greeting: "Beste Four Aces,"
 order: "Ik dacht er aan het volgende te bestellen:"
 odysseeProduct: "cd Odyssee"
-odysseePrice: 15
+odysseePrice: 20
 forAcesProduct: "cd For Aces"
 forAcesPrice: 20
 tabulaRasaProduct: "cd Tabula Rasa"
@@ -21,8 +26,8 @@ combo1Product: "puzzel Tabula Rasa + cd Tabula Rasa"
 combo1Price: 50
 combo2Product: "cd Odyssee + cd For Aces + cd Tabula Rasa"
 combo2Price: 50
-total: "voor een totaalbedrag van"
-adress: "Het afleveradres zou het volgende zijn:"
+total: "voor een totaalbedrag van "
+address: " Het leveradres zou het volgende zijn:"
 shippingCost: "Hoe zouden we het beste de de bestelling tot bij mij krijgen?"
 account: "Bij overeenkomst zou ik dan het nodige bedrag kunnen storten op rekeningnummer IBAN BE12 3456 7890 1234."
 goodbye: "Groetjes,"

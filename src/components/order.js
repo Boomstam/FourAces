@@ -1,5 +1,6 @@
 import React from 'react';
 import storage from '../storage/storage';
+import OrderForm from './orderForm';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 
@@ -13,12 +14,19 @@ export default class Order extends React.Component {
         
         super(props);
 
-        this.state = { orderData: props.orderData }
+        this.state = { orderData: props.orderData, hasContinued: false }
+    }
+
+    continue(){
+
+        this.setState( { orderData: this.state.orderData, hasContinued: true } );
     }
 
     handleClose()
     {
       this.props.closeToDefault();
+
+      this.setState( { orderData: this.state.orderData, hasContinued: false } );
     }
 
     updateInput(index, value){
@@ -27,7 +35,7 @@ export default class Order extends React.Component {
 
         orderData[index] = value;
 
-        this.setState( { orderData: orderData } );
+        this.setState( { orderData: orderData, hasContinued: false } );
     }
 
     addItem(index){
@@ -36,7 +44,7 @@ export default class Order extends React.Component {
 
         orderData[index] = orderData[index] + 1;
 
-        this.setState( { orderData: orderData } );
+        this.setState( { orderData: orderData, hasContinued: false } );
     }
 
     getTotalAmount(){
@@ -61,7 +69,7 @@ export default class Order extends React.Component {
 
         if(this.state === null){
 
-            this.setState( { orderData: this.props.orderData } );
+            this.setState( { orderData: this.props.orderData, hasContinued: false } );
             orderData = this.props.orderData;
 
         } else {
@@ -70,10 +78,13 @@ export default class Order extends React.Component {
         }
         let productData =this.props.productData;
         let currentProduct = this.props.currentProduct;
-        let text = this.props.text;
-        //console.log("TEXT_" + JSON.stringify(text))
+        let text = this.props.text;;
+
+        if(this.state.hasContinued === false){
+            
         return(
             <StyledOrder>
+                
                 <CrossContainer
                 onClick={this.handleClose.bind(this)}>
             <Cross sizes={cross}/>
@@ -97,8 +108,26 @@ export default class Order extends React.Component {
           </Products>
             <Total>{text.totalTag}</Total>
             <TotalAmount>{this.getTotalAmount() + currency}</TotalAmount> 
+
+            <ProceedButton 
+                onClick={this.continue.bind(this)}>
+                {text.proceedText}
+                </ProceedButton>
+
+            <Disclaimer>{text.disclaimer}</Disclaimer>
             </StyledOrder>
         )
+            } else {
+
+                return(
+                    <OrderForm 
+
+                        orderData={orderData}
+                        productData={productData}
+                        total={this.getTotalAmount() + currency}
+                        closeToDefault={this.props.closeToDefault}/>
+                )
+            }
     }
 }
 
@@ -170,12 +199,21 @@ display: inline;
     
 `
 
-const ProceedButton = styled.div`
-
-    
+const ProceedButton = styled.button`
+    display: block;
+    margin-top: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10vw;
+    height: 10vh;
 `
 
 const Disclaimer = styled.div`
 
+    margin-top: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50vw;
+    text-align: center;
     
 `
