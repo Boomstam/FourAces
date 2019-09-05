@@ -21,7 +21,7 @@ forAcesPrice: 20
 tabulaRasaProduct: "cd Tabula Rasa"
 tabulaRasaPrice: 20
 puzzleProduct: "puzzel Tabula Rasa"
-puzzlePrice: 35
+puzzlePrice: 30
 combo1Product: "puzzel Tabula Rasa + cd Tabula Rasa"
 combo1Price: 50
 combo2Product: "cd Odyssee + cd For Aces + cd Tabula Rasa"
