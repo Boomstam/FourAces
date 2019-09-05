@@ -6,7 +6,7 @@ import Img from 'gatsby-image';
 const textType = "Shop";
 const crossName = "Cross.png";
 
-const mailToTag = "mailto:info@fouracesgq.com?subject=";
+const mailToTag = "mailto:fouracesquartet@gmail.com?subject=";
 const bodyTag ="&body=";
 
 const newLine = "\n";
@@ -131,7 +131,7 @@ export default class OrderForm extends React.Component {
                 onChange={e => this.updateFields(1, e.target.value)}/>
 
             <ProceedButton
-                href="mailto:info@fouracesgq.com"
+                href="mailto:fouracesquartet@gmail.com"
                 body={this.getMailData.bind(this)}
                 onClick={e => this.continue(text)}
             >

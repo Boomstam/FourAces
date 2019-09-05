@@ -136,17 +136,28 @@ const StyledOrder = styled.div`
     margin: 0vh 0vw 20vh 0vw;
 `
 
+/*@media (min-width: 650px) {
+    left: 90vw;
+}*/
 const CrossContainer = styled.div`
     position: absolute;
-    left: 75vw;
+    left: 88vw;
+    @media (min-width: 650px) {
+        left: 80vw;
+    }
 `
 
 const Cross = styled(Img)`
-    width: 3vw;
+    width: 5vw;
+    @media (min-width: 650px) {
+        &:hover {
+            width: 4vw;
+        }
+    }
     z-index: 3;
     cursor: pointer;
     &:hover {
-        width: 4vw;
+        width: 6vw;
     }
 `
 
@@ -160,9 +171,13 @@ const Products = styled.div`
 `
 
 const ProductLine = styled.div`
+    @media (min-width: 650px) {
+        margin: 5vh 0vw 5vh 30vw;
+    }
+    height: 2vh;
+    margin: 5vh 0vw 5vh 15vw;
+    
 
-    height: 2vhh;
-    margin: 5vh 0vw 5vh 30vw;
 `
 
 const ProductName = styled.div`
@@ -171,13 +186,18 @@ const ProductName = styled.div`
 display: inline;
 `
 
+//display: inline;
 const Amount = styled.input`
 
 position: absolute;
-left: 60vw;
+left: 75vw;
 
-display: inline;
-width: 5vw;
+width: 10vw;
+
+    @media (min-width: 650px) {
+        left: 60vw;
+        width: 5vw;
+    }
 `
 
 const Price = styled.div`
@@ -204,8 +224,11 @@ const ProceedButton = styled.button`
     margin-top: 5vh;
     margin-left: auto;
     margin-right: auto;
-    width: 10vw;
+    width: 30vw;
     height: 10vh;
+    @media (min-width: 650px) {
+        width: 10vw;
+    }
 `
 
 const Disclaimer = styled.div`
@@ -213,7 +236,10 @@ const Disclaimer = styled.div`
     margin-top: 5vh;
     margin-left: auto;
     margin-right: auto;
-    width: 50vw;
+    width: 70vw;
+    @media (min-width: 650px) {
+        width: 50vw;
+    }
     text-align: center;
     
 `

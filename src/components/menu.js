@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import storage from '../storage/storage'
+import storage from '../storage/storage';
 
 const textType = "Menu";
 

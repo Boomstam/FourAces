@@ -2,9 +2,31 @@ import React from 'react';
 import styled from 'styled-components';
 import storage from '../storage/storage';
 import Img from 'gatsby-image';
+import state from '../state/state';
 
 const crossName = "Cross.png";
 const mapsLink = "https://www.google.com/maps/search/?api=1&query=";
+
+const nlNoLink = "Niet beschikbaar";
+const enNoLink = "Not available";
+
+function checkText(text){
+
+    if(text === null || text === undefined){
+
+        if(state.languageState.getLanguage()){
+
+            return nlNoLink;
+
+        } else {
+            
+            return enNoLink;
+        }
+    } else {
+
+        return text;
+    }
+}
 
 function getMapsLink(info){
 
@@ -37,7 +59,9 @@ export default class EventInfo extends React.Component
 
         let linkTitle = this.props.titles[3];
         let link = this.props.info.link;
+
         let linkText = this.props.info.linkText;
+        linkText = checkText(linkText);
 
         let locationTitle = this.props.titles[4];
         let location = this.props.info.location;
@@ -96,9 +120,12 @@ const Cross = styled(Img)`
 `
 
 const Title = styled.div`
-    font-size: 2vw;
+    @media(min-width: 650px){
+        font-size: 2vw;    
+    }
+    font-size: 5vw;
     font-weight: 700;
-    margin: 20vh 0vw 5vh 40vw
+    margin: 20vh 0vw 5vh 30vw
 `
 
 const SubTitle = styled.div`

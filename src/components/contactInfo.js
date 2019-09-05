@@ -6,7 +6,7 @@ import state from '../state/state';
 const infoType = "Info";
 const index = 1;
 
-const mailAdress = "info@fouracesgq.com"
+const mailAdress = "fouracesquartet@gmail.com"
 const mailListHyperLink = "https://us3.list-manage.com/subscribe?u=1f3dc7d1ffbcf14d26a22133d&id=4967e12432";
 
 const loge35Mail = "info@loge35.be";
@@ -47,7 +47,7 @@ export default class ContactInfo extends React.Component
                 <TopMargin/>
 
                 <Title>{info.frontmatter.infoTitle}</Title>
-                <Mail href="mailto:info@fouracesgq.com" 
+                <Mail href="mailto:fouracesquartet@gmail.com" 
                      target="_blank">
                      {mailAdress}
                      </Mail>

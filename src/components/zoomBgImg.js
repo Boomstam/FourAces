@@ -6,6 +6,9 @@ import storage from '../storage/storage';
 const posKeyword = "position";
 const posValKeyword = "fixed";
 
+const imgKeyword = "backgroundImage";
+
+
 function getImg(imgName){
     
     return storage.imageStorage.getImageByName(imgName);
@@ -25,9 +28,8 @@ export default class ZoomBgImg extends React.Component {
             style = {};
         }
         style[posKeyword] = posValKeyword;//Only works through here; not in styled comp
-        
-        return(
 
+        return(
 
                 <StyledImg 
                     style={style}
@@ -43,4 +45,9 @@ const StyledImg = styled(Img)`
     top: 0;
     z-index: -1;
     opacity: 0.25;
+
+    @media(min-width: 650px){
+
+        width: 100vw;
+    }
 `

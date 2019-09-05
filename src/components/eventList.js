@@ -5,8 +5,8 @@ import EventInfo from './eventInfo';
 
 const textType = "Other";
 const numColumns = 5;
-const firstEventTop = 30;
-const spaceBetween = 8;
+const firstEventTop = 28;
+const spaceBetween = 10;
 const heightSuffix = "vh";
 
 export default class EventList extends React.Component
@@ -51,7 +51,7 @@ export default class EventList extends React.Component
         if(stateNullOrNone)
         {
         return(
-            <div>
+            <StyledEvents>
                 <Title>{titles[0]}</Title>
 
                 {events.map((event, i) => 
@@ -69,7 +69,7 @@ export default class EventList extends React.Component
                         {event.venue}
                     </Venue>
                     </Event>)}                
-        </div>
+        </StyledEvents>
         )}
         else{
             return(
@@ -82,10 +82,25 @@ export default class EventList extends React.Component
     }
 }
 
+const StyledEvents = styled.div`
+    
+    @media (min-width: 650px) {
+        font-size: 2.5vw;
+    }
+    @media (min-width: 850px) {
+        font-size: 1.5vw;
+    }
+    font-size: 3.5vw;
+`
+
 const Title = styled.div`
-    font-size: 2vw;
+    @media (min-width: 650px) {
+        font-size: 2vw;
+        margin: 15vh 0vw 0vh 40vw;
+    }
+    font-size: 5vw;
+    margin: 15vh 0vw 0vh 30vw;
     font-weight: 700;
-    margin: 15vh 0vw 0vh 40vw
 `
 
 const Event = styled.div`
@@ -100,26 +115,26 @@ const Border = styled.div`
     border-width: 1px;
     border-style: solid;
     position: absolute;
-    left: 13vw;
-    width: 75vw;
-    height: 6vh;
+    left: 5vw;
+    width: 90vw;
+    height: 9vh;
     z-index: 3;
 `
 
 const Date = styled.div`
-    font-size: 1.5vw;
     position: absolute;
     left: 15vw;
+    width: 25vw;
 `
     
 const City = styled.div`
-    font-size: 1.5vw;
     position: absolute;
     left: 40vw;
+    width: 25vw;
 `
 
 const Venue = styled.div`
-    font-size: 1.5vw;
     position: absolute;
     left: 65vw;
+    width: 25vw;
 `

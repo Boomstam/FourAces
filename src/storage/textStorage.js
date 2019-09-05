@@ -1,5 +1,4 @@
-import state from '../state/state'
-import { throws } from 'assert';
+import state from '../state/state';
 
 const nl = "NL";
 const en = "EN";
@@ -79,8 +78,8 @@ export default class TextStorage {
         let nlInfo = nodeColl.filter(obj => { return obj.frontmatter.language === nl });
         let enInfo = nodeColl.filter(obj => { return obj.frontmatter.language === en });
 
-        nlInfo = nlInfo.sort((a, b) => a.frontmatter.index > b.frontmatter.index);
-        enInfo = enInfo.sort((a, b) => a.frontmatter.index > b.frontmatter.index);
+        nlInfo = nlInfo.sort((a, b) => a.frontmatter.index > b.frontmatter.index ? 1 : -1);
+        enInfo = enInfo.sort((a, b) => a.frontmatter.index > b.frontmatter.index ? 1 : -1);
 
         let infoIndex = typeColl.indexOf(infoType);
 
@@ -95,13 +94,15 @@ export default class TextStorage {
         let nlDetails = nodeColl.filter(obj => { return obj.frontmatter.language === nl });
         let enDetails = nodeColl.filter(obj => { return obj.frontmatter.language === en });
     
-        nlDetails = nlDetails.sort((a, b) => a.frontmatter.index > b.frontmatter.index);
-        enDetails = enDetails.sort((a, b) => a.frontmatter.index > b.frontmatter.index);
-
+        nlDetails = nlDetails.sort((a, b) => a.frontmatter.index > b.frontmatter.index ? 1 : -1);
+        enDetails = enDetails.sort((a, b) => a.frontmatter.index > b.frontmatter.index ? 1 : -1);
+        
         let detailsIndex = typeColl.indexOf(detailsType);
-
         this.nlText[detailsIndex] = nlDetails;
         this.enText[detailsIndex] = enDetails;
+        
+        console.log(JSON.stringify(this.nlText[detailsIndex]) + 
+            "_" + JSON.stringify(this.enText[detailsIndex]));
     }
 
     parseMenu(allMarkdownRemark)

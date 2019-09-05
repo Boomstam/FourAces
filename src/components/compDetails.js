@@ -33,7 +33,7 @@ class CompDetails extends React.Component {
               <RightScene sizes={scene}/>
             </Content>
             )
-        }
+        } else {
         return(
             <Content>
               <LeftScene sizes={scene}/>
@@ -49,6 +49,7 @@ class CompDetails extends React.Component {
             </Content>
             )
         }
+      }
           
  }
 
