@@ -25,14 +25,14 @@ export default class OrderForm extends React.Component {
 
     getMailData(){
 
-        console.log("StTAE_" + JSON.stringify(this.state));
+        //console.log("StTAE_" + JSON.stringify(this.state));
 
         
     }
 
     continue(text){
 
-        console.log("Continue_" + JSON.stringify(text));
+        //console.log("Continue_" + JSON.stringify(text));
 
         //this.getMailData();
         window.location.href = mailToTag + text.subject + bodyTag + this.getBody(text);
@@ -72,7 +72,7 @@ export default class OrderForm extends React.Component {
 
     updateFields(fieldIndex, value){
 
-        console.log("updateFields_" + fieldIndex + "_" + value);
+        //console.log("updateFields_" + fieldIndex + "_" + value);
         
         if(fieldIndex === 0){
         

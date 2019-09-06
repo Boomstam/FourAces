@@ -25,7 +25,7 @@ export default class ContactInfo extends React.Component
     {
         super(props);
 
-        console.log(this.props.pressKits)
+        //console.log(this.props.pressKits)
     }
 
     render(){

@@ -101,8 +101,8 @@ export default class TextStorage {
         this.nlText[detailsIndex] = nlDetails;
         this.enText[detailsIndex] = enDetails;
         
-        console.log(JSON.stringify(this.nlText[detailsIndex]) + 
-            "_" + JSON.stringify(this.enText[detailsIndex]));
+        /*console.log(JSON.stringify(this.nlText[detailsIndex]) + 
+            "_" + JSON.stringify(this.enText[detailsIndex]));*/
     }
 
     parseMenu(allMarkdownRemark)

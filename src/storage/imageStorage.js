@@ -30,7 +30,7 @@ export default class ImageStorage {
             }
             ).node.sizes;
         } catch {
-            console.log("Image not found!!!_" + name);
+            //console.log("Image not found!!!_" + name);
         }
     }
 

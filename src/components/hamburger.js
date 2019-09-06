@@ -8,7 +8,7 @@ const hamburgerImageName = "Arm.png";
 
 function hamburgerClick()
 {
-  console.log("hamburger click");
+  //console.log("hamburger click");
 
   state.menuToggler.toggleMenu();
 }
