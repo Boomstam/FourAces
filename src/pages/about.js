@@ -9,12 +9,16 @@ function handleLoad(){
 }
 
 export default class About extends React.Component {
+    
+    componentDidMount(){
 
+        navigate(home);
+    }
 
     render(){
 
         return(
-            <div onLoad={handleLoad()}/>
-        )
+            <div/>
+        )// onLoad={handleLoad()}
     }
 }

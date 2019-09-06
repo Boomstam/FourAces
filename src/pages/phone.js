@@ -10,10 +10,15 @@ function handleLoad(){
 
 export default class Phone extends React.Component {
 
+    componentDidMount(){
+
+        navigate(home);
+    }
+
     render(){
 
         return(
-            <div onLoad={handleLoad()}/>
+            <div/>
         )
-    }
+    }////<div>
 }
