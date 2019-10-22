@@ -12,6 +12,8 @@ const hourSeparator = " - ";
 
 export default function eventLoader(rawDataColl)
 {
+    //console.log("rawData_" + JSON.stringify(rawDataColl));
+
     let eventData = [];
     
     for (var i = 0; i < rawDataColl.items.length; i++) {
@@ -53,11 +55,17 @@ function getCity(rawData){
 
             let rawCity = locationColl[rawCityIndex];
          
-            let cityColl = rawCity.split(citySeparator);
+            if(rawCity !== null && rawCity !== undefined)
+            {
+                let cityColl = rawCity.split(citySeparator);
 
-            let length = cityColl.length - 2;
-
-            city = cityColl.splice(2, length);
+                if(cityColl !== null && cityColl !== undefined)
+                {
+                let length = cityColl.length - 2;
+    
+                city = cityColl.splice(2, length);
+                }
+            }
     }
     return city;
 }
